@@ -1,0 +1,23 @@
+\documentclass[tikz=true]{standalone}
+\usepackage[scaled=0.8]{beramono}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.text}
+
+\begin{document}
+
+\tt 
+
+\begin{tikzpicture}[inner sep=0, outer sep=0]
+\draw[draw=white] (0,0) ellipse (1.5cm and 1.5cm);
+\node (logo) at (0.05,0) {\includegraphics[width=2cm]{logo}};
+\path [postaction={decorate,decoration={raise=-1ex,text along path, text align=center,
+text={|\Large| Rascal}}}] (180:1.3cm) arc (180:5:1.3cm);
+\path [postaction={decorate,decoration={raise=-1ex,text along path, text align=center,
+ text={|\small| Metaprogramming}}}] (180:1.27cm) arc (180:355:1.27cm);
+
+\end{tikzpicture}
+
+\end{document}

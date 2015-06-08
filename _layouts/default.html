@@ -1,0 +1,137 @@
+{% assign isBlog = false %}
+{% for post in site.posts %}
+   {% if page.url == post.url %}
+      {% assign isBlog = true %}
+   {% endif %}
+{% endfor %}
+{% assign isBlogList = false %}
+{% if page.url == "/blog/index.html" or page.url == "/blog/archive.html" %}
+   {% assign isBlogList = true %}
+{% endif %}
+ 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rascal MPL - {{ page.title }}</title>
+	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+	<meta name="author" content="{{ site.author.name }}">
+
+	<!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+      {% if isBlog or isBlogList %}
+         <link href="/blog/feed.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+      {% endif %}
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+	<link rel="shortcut icon" href="/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="container normal">
+       <div class="row-fluid">
+          <div class="span8 offset2">
+
+            <div class="masthead">
+              <ul class="nav nav-pills pull-left">
+              {% include menu %}
+              </ul>
+            </div>
+
+            <div class="page-header" style="clear: left">
+              <h1>Rascal <small>Metaprogramming Language</small></h1>
+            </div>
+         </div>
+      </div>
+
+      {% if isBlog or isBlogList %}
+         <div class="row-fluid content">
+            <div class="span8 offset2">
+               {{ content }}
+            </div>
+            <div class="span2">
+               <ul class="nav nav-list">
+                  {% if page.url == "/blog/index.html" %}
+                     <li class="active"><a href="/blog/">Index</a>
+                  {% else %}
+                     <li><a href="/blog/">Index</a>
+                  {% endif %}
+                  {% for post in site.posts offset:0 limit:10 %}
+                     {% if page.url == post.url %}
+                        <li class="active"><a href="{{post.url}}">{{post.title}}</a>
+                     {% else %}
+                        <li><a href="{{post.url}}">{{post.title}}</a>
+                     {% endif %}
+                  {% endfor %}
+                  {% if page.url == "/blog/archive.html" %}
+                     <li class="active"><a href="/blog/archive.html">Archive</a>
+                  {% else %}
+                     <li><a href="/blog/archive.html">Archive</a>
+                  {% endif %}
+                  <li><a href="/blog/feed.xml" target="_blank"><i class="icon-rss"></i> rss feed</a>
+               </ul>
+            </div>
+         </div>
+      {% else %}
+         <div class="row-fluid content">
+            <div class="span8 offset2">
+               {{ content }}
+            </div>
+         </div>
+      {% endif %}
+
+       <div class="row-fluid">
+          <div class="span8 offset2">
+            <hr>
+
+            <div class="footer" style="position:relative">
+              <p> Copyright &copy; 2014, CWI</p>
+              <a class="muted" rel="nofollow" style="position: absolute; right:0; top:0" href="http://prose.io/#cwi-swat/rascal-website/edit/gh-pages/{{page.path}}">edit <i class="icon-edit"></i></a>
+            </div>
+         </div>
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script  type="text/javascript">
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname) {
+            links[i].target = '_blank';
+         } 
+      }
+    </script>
+
+      <script type="text/javascript">
+         var _gaq = _gaq || [];
+         _gaq.push(['_setAccount', 'UA-560596-6']);
+         _gaq.push(['_trackPageview']);
+
+         (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+      </script>
+  </body>
+</html>

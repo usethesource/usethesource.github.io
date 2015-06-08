@@ -1,0 +1,9 @@
+{% assign title_link = link | append: "index.html" %}
+{% if page.url == link or page.url == title_link or (blogRoot and isBlog) or (blogRoot and page.url == "/blog/archive.html") %}
+   <li class="active"><a href="{{link}}" class="active">{{title}}</a></li>
+{% else %}
+   <li><a href="{{link}}">{{title}}</a></li>
+{% endif %}
+{% assign title = nil %}
+{% assign link = nil %}
+{% assign blogRoot = nil %}
