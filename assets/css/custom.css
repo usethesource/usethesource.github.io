@@ -52,12 +52,12 @@
   }
 
 .container.normal {
-   background: no-repeat 25% 0% url('/assets/img/sun');
+   background: no-repeat 25% 0% url('/assets/img/sun.jpg');
    background-size: 100px;
 }
 @media (max-width: 767px) {
    .container.normal {
-      background: no-repeat 100% 0% url('/assets/img/logo_rascal_light_small.png');
+      background: no-repeat 100% 0% url('/assets/img/sun.jpg');
       background-size: 100px;
    }
 }
