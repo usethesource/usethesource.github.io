@@ -176,7 +176,7 @@ pre .important {
 
 .front-back {
   position: relative;
-  background-color:rgba(255,255,255,0.5);
+  /*background-color:rgba(255,255,255,0.5);*/
 }
 #scrolling-container {
   z-index:-10;
@@ -221,34 +221,35 @@ pre .important {
 #scrolling-content {
 	position: absolute;
 	top: 100%;
-	-webkit-animation: scroll 200s linear 2s infinite;
-	-moz-animation: scroll 200s linear 2s infinite;
-	-ms-animation: scroll 200s linear 2s infinite;
-	-o-animation: scroll 200s linear 2s infinite;
-	animation: scroll 200s linear 2s infinite;
+  opacity: 0.5;
+	-webkit-animation: scroll 100s linear 2s infinite;
+	-moz-animation: scroll 100s linear 2s infinite;
+	-ms-animation: scroll 100s linear 2s infinite;
+	-o-animation: scroll 100s linear 2s infinite;
+	animation: scroll 100s linear 2s infinite;
 }
 
 @-webkit-keyframes scroll {
 	0% { top: 100%; }
-	100% { top: -1700%; }
+	100% { top: -70em; }
 }
 
 @-moz-keyframes scroll {
 	0% { top: 100%; }
-	100% { top: -1700%; }
+	100% { top: -70em; }
 }
 
 @-ms-keyframes scroll {
 	0% { top: 100%; }
-	100% { top: -1700%; }
+	100% { top: -70em; }
 }
 
 @-o-keyframes scroll {
 	0% { top: 100%; }
-	100% { top: -1700%; }
+	100% { top: -70em; }
 }
 
 @keyframes scroll {
 	0% { top: 100%; }
-	100% { top: -1700%; }
+	100% { top: -70em; }
 }
