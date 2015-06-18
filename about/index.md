@@ -4,7 +4,7 @@ title: About
 published: true
 ---
 
-UseTheSource is a collection of open-source projects related to [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming) in a broad sense and [software language engineering](http://www.sleconf.org): languages, libraries and tools. See [Projects](../projects/) for the full list. The general goal of this software is to help software engineers manage the complexity of their code by automating tasks which are hard or cumbersome to do "manually". On UseTheSource we make no distinction between "abstract models" and "source code"; it's all code.
+UseTheSource is a collection of open-source projects related to [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming) in a broad sense and [software language engineering](http://www.sleconf.org): languages, libraries, tools, IDEs. See [Projects](../projects/) for the full list. The general goal of this software is to help software engineers manage the complexity of their code by automating tasks which are hard or cumbersome to do otherwise. On UseTheSource we make no distinction between _abstract models_ and _source code_; it's all code written in a given software language.
 
 ### Contributors
 
