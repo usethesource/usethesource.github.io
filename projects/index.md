@@ -4,11 +4,10 @@ title: Projects
 published: true
 ---
 
-### Generic Language Technology
-
+### Meta Languages
 
 ### Programming Languages
 
-
 ### Modeling Languages
 
+### Libraries
