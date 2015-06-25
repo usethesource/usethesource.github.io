@@ -13,9 +13,9 @@ Find out who they are [here on github](https://github.com/orgs/usethesource/peop
 
 ### Documents
 
-* [Contributor License Agreement](agreement.md)
-* [Open Source Licenses](licenses.md)
-* [Architecture Guidelines](architecture.md)
-* [Coding Rules](coding.md)
-* [Community Processes](processes.md)
-* [Community Values](values.md)
+* [Contributor License Agreement](agreement.html)
+* [Open Source Licenses](licenses.html)
+* [Architecture Guidelines](architecture.html)
+* [Coding Rules](coding.html)
+* [Community Processes](processes.html)
+* [Community Values](values.html)
