@@ -1,5 +1,7 @@
-# Rascal website
-This repository contains the website for [www.rascal-mpl.org](http://www.rascal-mpl.org).
+# UseTheSource website
 
-This readme will contain some instructions for common task in content
-management.
+This repository contains the website for [Use The Source](http://www.usethesource.io).
+
+* managed using jekyll 
+* hosted on github pages
+
