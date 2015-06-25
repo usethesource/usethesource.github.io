@@ -4,10 +4,5 @@ title: Projects
 published: true
 ---
 
-### Meta Languages
+* [Rascal Meta Programming Language](http://www.rascalmpl.org)
 
-### Programming Languages
-
-### Modeling Languages
-
-### Libraries
