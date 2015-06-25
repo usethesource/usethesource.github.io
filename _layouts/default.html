@@ -8,12 +8,13 @@
 {% if page.url == "/blog/index.html" or page.url == "/blog/archive.html" %}
    {% assign isBlogList = true %}
 {% endif %}
+{% assign theTitle = page.title %}
  
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>UseTheSource {% if page.url != "/" %} - {% page.title %}{% endif %}</title>
+    <title>{{theTitle}}</title>
 	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
 
@@ -55,7 +56,8 @@
             </div>
 
             <div class="page-header" style="clear: left">
-              <h1>Use The Source - {% page.title %} </h1>
+              <h1>Use The Source</h1><br>
+              <h2>{{theTitle}}</h2>
             </div>
          </div>
       </div>
