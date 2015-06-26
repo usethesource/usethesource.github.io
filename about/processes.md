@@ -12,6 +12,7 @@ UseTheSource is organized as a flat hierarchy with of roles with Board Members o
 
 The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
+
 ## Incubation Process
 
 1. Contributors propose the start of a new project to The Board Members at UseTheSource by:
@@ -59,6 +60,8 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 5. When a "no go" decision is made:
    * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
    * Project Owners or Board Members can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
+
+## Contributor Project Membership Process
 
 ## Development Process
 
