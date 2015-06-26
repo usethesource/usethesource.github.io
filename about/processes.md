@@ -52,7 +52,7 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
 1. Design decisions which influence all or many of the UseTheSource projects are registered as an issue at <https://github.com/usethesource/usethesource.github.io/issues> by Project Owners or Contributors;
 2. Project Owners discuss the change for acceptance and finetune the planning regarding the implementation of the change;
-3. The ultimate decision for implementing the change lies with the Board Members, who have to agree unanimously;
+3. The ultimate decision for implementing the change lies with the Board Members, who have to agree unanimously and sollicit support from the Project Owners of all affected projects;
 4. A unique and new branch name is decided upon;
 5. New issues are registered with the respective projects for implementing the change;
 6. All relevant projects are branched using the given branch name;
