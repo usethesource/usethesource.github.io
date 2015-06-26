@@ -8,7 +8,7 @@ These are recipes for how things are organized in the UseTheSource community.
 
 ## Organization
 
-UseTheSource is organized as a flat hierarchy with of roles with Board Members on top, Project Owners in the middle and Contributors below. The Board Members take responsibility for the integration and presentation of the entire community. The project owners have the responsibility for a specific project (one project may have several owners), and the contributors are responsible for each contribution made. Specific rights and responsibilities for each role are mentioned below.
+UseTheSource is organized as a flat hierarchy with of roles with Board Members on top, Project Owners in the middle and Contributors below. The Board Members take responsibility for the integration and presentation of the entire community. The Project Owners have the responsibility for a specific project (one project may have several owners), and the Contributors are responsible for each contribution made. Users are people who download and apply the projects and possible submit pull requests or issues. Specific rights and responsibilities for each role are mentioned below.
 
 The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
@@ -39,14 +39,25 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
    * the issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
    * contributors can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
 
+
+## Burial Process
+
+1. Project Owners or Board Members propose the end-of-life of a UseTheSource project at <https://github.com/usethesource/usethesource.github.io/issues>.
+2. Board Members evaluate the proposal by the following merits:
+   * no other UseTheSource projects depend on the given project;
+   * viability is arguably in danger;
+   * discontinuation of the project is beneficial to the Project Owners, Contributors;
+   * discontinuation of the project is not harmful for known Users.
+
 ## Development Process
 
 ## Release Process
 
 ## User Support Process
 
-* github issues for user feedback, questions, feature requests and bug reports
-* stackoverflow.com for questions regarding programming in our languages (tag with the language name)
+* Github issues is used for user feedback, questions, feature requests and bug reports;
+* Any pull request by a User over 2 lines of code requires a signed [UseTheSource Contributor Agreement](agreement.html) by the author;
+* The stackoverflow.com site is promoted among Users for questions regarding programming in any of the UseTheSource languages (tag with the given language name).
 
 ## Architectural Change Process
 
