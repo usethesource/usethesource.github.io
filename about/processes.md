@@ -21,33 +21,44 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
    * proposing a Project Owner;
    * including a short motivation which details intended audience, distinguishing features, possibly dependence on and usefulness for other UseTheSource projects, and references to technical reports and/or academic papers.
 2. Board Members evaluate the proposal by the following merits:
-   * on-topic for UseTheSource; 
-   * relevant and interesting for a specified audience;
-   * viability for a 5 year horizon;
-   * well tested (e.g. including automated unit and integration tests and verifiable usage by early adopters);
-   * adherence to the UseTheSource architecture and coding rules;
-   * adherence to the UseTheSource open-source licenses;
-   * signed [UseTheSource Contributor Agreements](agreement.html) by all authors of the code;
+   * On-topic for UseTheSource; 
+   * Relevant and interesting for a specified audience;
+   * Viability for a 5 year horizon;
+   * Well tested (e.g. including automated unit and integration tests and verifiable usage by early adopters);
+   * Adherence to the UseTheSource architecture and coding rules;
+   * Adherence to the UseTheSource open-source licenses;
+   * Signed [UseTheSource Contributor Agreements](agreement.html) by all authors of the code;
 3. Discussion is logged at <https://github.com/usethesource/usethesource.github.io/issues>, leading up to a unanimous "go" or "no-go" decision by the Board Members.
 4. When a "go" decision is made:
-   * the project is transferred to the usethesource organization on github;
-   * a new webpage is instantiated;
-   * the project is added to [the projects page](../projects/);
-   * the project is included in the continuous integration environment;
-   * the issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>.
+   * The project is transferred to the usethesource organization on github;
+   * A new webpage is instantiated;
+   * The project is added to [the projects page](../projects/);
+   * The project is included in the continuous integration environment;
+   * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>.
 5. When a "no go" decision is made:
-   * the issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
-   * contributors can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
+   * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
+   * Contributors can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
 
 
 ## Burial Process
 
 1. Project Owners or Board Members propose the end-of-life of a UseTheSource project at <https://github.com/usethesource/usethesource.github.io/issues>.
-2. Board Members evaluate the proposal by the following merits:
-   * no other UseTheSource projects depend on the given project;
-   * viability is arguably in danger;
-   * discontinuation of the project is beneficial to the Project Owners, Contributors;
-   * discontinuation of the project is not harmful for known Users.
+   * This event is expected to be extremely rare, and mirrors the Incubation Process.
+2. Board Members and evaluate the proposal by the following merits:
+   * No other UseTheSource projects depend on the given project;
+   * Viability is arguably in danger;
+   * Discontinuation of the project is beneficial to the Project Owners, Contributors;
+   * Discontinuation of the project is not harmful for known Users.
+3. Discussion is logged at <https://github.com/usethesource/usethesource.github.io/issues>, leading up to a unanimous "go" or "no-go" decision by the Board Members.
+4. When a "go" decision is made:
+   * The github repository is moved from usethesource to a different organization or user on github (e.g. the Project Owner);
+   * The project is removed from the continuous integration setup;
+   * The project's website is removed;
+   * The project is listed at the [projects page](../projects/) for historical reference;
+   * the issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>;
+5. When a "no go" decision is made:
+   * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
+   * Project Owners or Board Members can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
 
 ## Development Process
 
