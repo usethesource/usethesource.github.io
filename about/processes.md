@@ -12,8 +12,7 @@ UseTheSource is organized as a flat hierarchy with of roles with Board Members o
 
 The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
-
-## Incubation Process
+## Project Incubation Process
 
 1. Contributors propose the start of a new project to The Board Members at UseTheSource by:
    * creating an issue at <https://github.com/usethesource/usethesource.github.io/issues>; 
@@ -40,8 +39,29 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
    * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
    * Contributors can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
 
+## Contributor Project Membership Process
 
-## Burial Process
+## Project Development Process
+
+## Project Release Process
+
+## Project User Support Process
+
+* Github issues is used for user feedback, questions, feature requests and bug reports;
+* Any pull request by a User over 2 lines of code requires a signed [UseTheSource Contributor Agreement](agreement.html) by the author;
+* The stackoverflow.com site is promoted among Users for questions regarding programming in any of the UseTheSource languages (tag with the given language name).
+
+## Architectural Change Process
+
+1. Design decisions which influence all or many of the UseTheSource projects are registered as an issue at <https://github.com/usethesource/usethesource.github.io/issues> by Project Owners or Contributors;
+2. Project Owners discuss the change for acceptance and finetune the planning regarding the implementation of the change;
+3. The ultimate decision for implementing the change lies with the Board Members, who have to agree unanimously and sollicit support from the Project Owners of all affected projects;
+4. A unique and new branch name is decided upon;
+5. New issues are registered with the respective projects for implementing the change;
+6. All relevant projects are branched using the given branch name;
+7. When all projects are stable on said branch, the branches are merged to master and the issue is closed.
+
+## Project Burial Process
 
 1. Project Owners or Board Members propose the end-of-life of a UseTheSource project at <https://github.com/usethesource/usethesource.github.io/issues>.
    * This event is expected to be extremely rare, and mirrors the Incubation Process.
@@ -61,24 +81,3 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
    * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
    * Project Owners or Board Members can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
 
-## Contributor Project Membership Process
-
-## Development Process
-
-## Release Process
-
-## User Support Process
-
-* Github issues is used for user feedback, questions, feature requests and bug reports;
-* Any pull request by a User over 2 lines of code requires a signed [UseTheSource Contributor Agreement](agreement.html) by the author;
-* The stackoverflow.com site is promoted among Users for questions regarding programming in any of the UseTheSource languages (tag with the given language name).
-
-## Architectural Change Process
-
-1. Design decisions which influence all or many of the UseTheSource projects are registered as an issue at <https://github.com/usethesource/usethesource.github.io/issues> by Project Owners or Contributors;
-2. Project Owners discuss the change for acceptance and finetune the planning regarding the implementation of the change;
-3. The ultimate decision for implementing the change lies with the Board Members, who have to agree unanimously and sollicit support from the Project Owners of all affected projects;
-4. A unique and new branch name is decided upon;
-5. New issues are registered with the respective projects for implementing the change;
-6. All relevant projects are branched using the given branch name;
-7. When all projects are stable on said branch, the branches are merged to master and the issue is closed.
