@@ -8,13 +8,12 @@
 {% if page.url == "/blog/index.html" or page.url == "/blog/archive.html" %}
    {% assign isBlogList = true %}
 {% endif %}
-{% assign theTitle = page.title %}
  
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{theTitle}}</title>
+    <title>{{page.title}} | Use The Source </title>
 	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
 
@@ -53,11 +52,13 @@
               <ul class="nav nav-pills pull-left">
               {% include menu %}
               </ul>
+              <span class="nav pull-right small-title">
+                Use The Source
+              </span>
             </div>
 
             <div class="page-header" style="clear: left">
-              <h1>Use The Source</h1><br>
-              <h2>{{theTitle}}</h2>
+              <h2>{{page.title}}</h2>
             </div>
          </div>
       </div>
