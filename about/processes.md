@@ -49,7 +49,7 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
 * Github issues is used for user feedback, questions, feature requests and bug reports;
 * Any pull request by a User over 2 lines of code requires a signed [UseTheSource Contributor Agreement](agreement.html) by the author;
-* The stackoverflow.com site is promoted among Users for questions regarding usgin any of UseTheSource projects (tag with the given language name/library/tool).
+* The stackoverflow.com site is promoted among Users for questions regarding using any of UseTheSource projects (tag with the given language name/library/tool).
 
 ## Architectural Change Process
 
