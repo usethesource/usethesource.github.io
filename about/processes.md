@@ -49,7 +49,7 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 
 * Github issues is used for user feedback, questions, feature requests and bug reports;
 * Any pull request by a User over 2 lines of code requires a signed [UseTheSource Contributor Agreement](agreement.html) by the author;
-* The stackoverflow.com site is promoted among Users for questions regarding programming in any of the UseTheSource languages (tag with the given language name).
+* The stackoverflow.com site is promoted among Users for questions regarding usgin any of UseTheSource projects (tag with the given language name/library/tool).
 
 ## Architectural Change Process
 
@@ -74,10 +74,9 @@ The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
 4. When a "go" decision is made:
    * The github repository is moved from usethesource to a different organization or user on github (e.g. the Project Owner);
    * The project is removed from the continuous integration setup;
-   * The project's website is removed;
-   * The project is listed at the [projects page](../projects/) for historical reference;
+   * The project's website is redirected to the github repository page;
+   * The project is listed at the [projects page](../projects/) for historical reference (with a link to the new location);
    * the issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>;
 5. When a "no go" decision is made:
    * The issue is closed at <https://github.com/usethesource/usethesource.github.io/issues>
    * Project Owners or Board Members can propose again in the future by re-opening the issue at <https://github.com/usethesource/usethesource.github.io/issues>
-
