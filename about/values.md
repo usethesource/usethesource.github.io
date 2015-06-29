@@ -42,6 +42,6 @@ Examples of unacceptable behavior by participants include the use of sexual lang
 
 This code of conduct applies both within project spaces and in public spaces when an individual is representing the UseTheSource community or one of its projects.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [opening an issue](https://github.com/usethesource/usethesource.github.io/issues) or contacting one or more of the project maintainers.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [opening an issue](https://github.com/usethesource/usethesource.github.io/issues) or contacting one or more of the [Project Owners](/projects/).
 
 This Code of Conduct is adapted from the Contributor Covenant, version 1.1.0, available from <http://contributor-covenant.org/version/1/1/0/>
