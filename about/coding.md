@@ -17,7 +17,11 @@ These are guidelines for code style and quality that we follow at UseTheSource.
 
 * all public classes are documented with Javadoc to state their intent and purpose.
 * all public methods are documented with Javadoc to state their intent and purpose.
+* package names are `io.usethesource.<project>.<sub>` 
 
 ## Rascal
 
 * all public functions have @doc tags in Rascal tutor format.
+* tools for languages reside in `lang/<language name>/<sub?>/<tool name>.rsc`
+* generic algorithms for analysis reside in `analysis/<algorithm group>/<algorithm>.rsc`
+* generic utilities (i.e. for communication) reside in `utils/<utility>.rsc`
