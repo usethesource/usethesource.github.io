@@ -9,9 +9,9 @@ The decisions and the fact that they are shared among the projects is motivated 
 
 ## Programming Languages, Frameworks and Platform 
 
-* Core projects fully run on the JVM
-* Primary languages are Rascal and Java
-* Eclipse Luna for IDE features and UI integration
+* We try to avoid external dependencies, and use the JVM as much as possible;
+* External dependencies we resolve using the maven grand central (no embedded jars) or standard Eclipse update sites;
+* Eclipse Luna for IDE features and UI integration;
 * HTML5 for visualization
 
 ## Continuous Integration and Testing
@@ -39,6 +39,7 @@ The issue tracking system is used as task list and issue management system at th
 
 * All projects are continuously released on the `unstable` update site and maven repository (add link)
 * Projects have an independent release and deployment cycle when possible; but if dependencies are broken then release and deployment is synchronised.
+* External dependencies which are not on the Eclipse standard update sites and not in the Maven Grand Central get a separate feature released indepedently on our update site.
 
 ## Websites
 
