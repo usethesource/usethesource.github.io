@@ -1,1 +1,866 @@
-<img src="file:///Users/jurgenv/Downloads/usethesrc4.png">
+<pre class="rascal"><code><span class="Keyword">module</span> lang::rascal::\syntax::Rascal
+
+<span class="Keyword">lexical</span> BooleanLiteral
+	= <span class="Constant">"true"</span> 
+	| <span class="Constant">"false"</span> ;
+
+<span class="Keyword">syntax</span> Literal
+	= integer: IntegerLiteral integerLiteral 
+	| regExp: RegExpLiteral regExpLiteral 
+	| \real: RealLiteral realLiteral 
+	| boolean: BooleanLiteral booleanLiteral 
+	| string: StringLiteral stringLiteral 
+	| dateTime: DateTimeLiteral dateTimeLiteral 
+	| location: LocationLiteral locationLiteral
+	| rational: RationalLiteral rationalLiteral
+	;
+
+<span class="Keyword">syntax</span> Expression = concrete: Concrete concrete;
+<span class="Keyword">syntax</span> Pattern    = concrete: Concrete concrete;
+
+<span class="Keyword">lexical</span> Concrete 
+  = typed: <span class="Constant">"("</span> LAYOUTLIST l1 Sym symbol LAYOUTLIST l2 <span class="Constant">")"</span> LAYOUTLIST l3 <span class="Constant">"`"</span> ConcretePart* parts <span class="Constant">"`"</span>;
+
+<span class="Keyword">lexical</span> ConcretePart
+  = <span class="Comment">@category=<span class="Constant">"MetaSkipped"</span></span> text   : ![<span class="Constant">`</span><span class="Constant">\&lt;</span><span class="Constant">\&gt;</span><span class="Constant">\\</span><span class="Constant">\n</span>]+ !&gt;&gt; ![<span class="Constant">`</span><span class="Constant">\&lt;</span><span class="Constant">\&gt;</span><span class="Constant">\\</span><span class="Constant">\n</span>]
+  | newline: <span class="Constant">"\n"</span> [<span class="Constant">\ </span><span class="Constant">\t</span> <span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>]* <span class="Constant">"\'"</span>
+  | <span class="Comment">@category=<span class="Constant">"MetaVariable"</span></span> hole : ConcreteHole hole
+  | <span class="Comment">@category=<span class="Constant">"MetaSkipped"</span></span> lt: <span class="Constant">"\\\&lt;"</span>
+  | <span class="Comment">@category=<span class="Constant">"MetaSkipped"</span></span> gt: <span class="Constant">"\\\&gt;"</span>
+  | <span class="Comment">@category=<span class="Constant">"MetaSkipped"</span></span> bq: <span class="Constant">"\\`"</span>
+  | <span class="Comment">@category=<span class="Constant">"MetaSkipped"</span></span> bs: <span class="Constant">"\\\\"</span>
+  ;
+  
+<span class="Keyword">syntax</span> ConcreteHole 
+  = \one: <span class="Constant">"\&lt;"</span> Sym symbol Name name <span class="Constant">"\&gt;"</span>
+  ;
+  
+<span class="Keyword">start</span> <span class="Keyword">syntax</span> Module
+	= \default: Header header Body body ;
+
+<span class="Keyword">syntax</span> ModuleParameters
+	= \default: <span class="Constant">"["</span> {TypeVar <span class="Constant">","</span>}+ parameters <span class="Constant">"]"</span> ;
+
+<span class="Keyword">lexical</span> DateAndTime
+	= <span class="Constant">"$"</span> DatePart <span class="Constant">"T"</span> TimePartNoTZ !&gt;&gt; [<span class="Constant">+</span><span class="Constant">\-</span>] <span class="Constant">"$"</span>
+	| <span class="Constant">"$"</span> DatePart <span class="Constant">"T"</span> TimePartNoTZ TimeZonePart <span class="Constant">"$"</span>;
+
+<span class="Keyword">syntax</span> Strategy
+	= topDownBreak: <span class="Constant">"top-down-break"</span> 
+	| topDown: <span class="Constant">"top-down"</span> 
+	| bottomUp: <span class="Constant">"bottom-up"</span> 
+	| bottomUpBreak: <span class="Constant">"bottom-up-break"</span> 
+	| outermost: <span class="Constant">"outermost"</span> 
+	| innermost: <span class="Constant">"innermost"</span> ;
+
+<span class="Keyword">lexical</span> UnicodeEscape
+	  = utf16: <span class="Constant">"\\"</span> [<span class="Constant">u</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] 
+    | utf32: <span class="Constant">"\\"</span> [<span class="Constant">U</span>] ((<span class="Constant">"0"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>]) | <span class="Constant">"10"</span>) [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>] <span class="Comment">// 24 bits </span>
+    | ascii: <span class="Constant">"\\"</span> [<span class="Constant">a</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">7</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span><span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span><span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>]
+    ;
+    
+<span class="Keyword">syntax</span> Variable
+	= initialized: Name name <span class="Constant">"="</span> Expression initial 
+	| unInitialized: Name name ;
+
+<span class="Keyword">lexical</span> OctalIntegerLiteral
+	= [<span class="Constant">0</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">7</span>]+ !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] ;
+
+<span class="Keyword">syntax</span> TypeArg
+	= \default: Type type 
+	| named: Type type Name name ;
+
+<span class="Keyword">syntax</span> Renaming
+	= \default: Name from <span class="Constant">"=\&gt;"</span> Name to ;
+
+<span class="Keyword">syntax</span> Catch
+	= \default: <span class="Constant">"catch"</span> <span class="Constant">":"</span> Statement body 
+	| binding: <span class="Constant">"catch"</span> Pattern pattern <span class="Constant">":"</span> Statement body ;
+
+<span class="Keyword">lexical</span> PathChars
+	= URLChars [<span class="Constant">|</span>] ;
+
+<span class="Keyword">syntax</span> Signature
+	= withThrows: FunctionModifiers modifiers Type type  Name name Parameters parameters <span class="Constant">"throws"</span> {Type <span class="Constant">","</span>}+ exceptions 
+	| noThrows: FunctionModifiers modifiers Type type  Name name Parameters parameters ;
+
+<span class="Keyword">syntax</span> Sym
+<span class="Comment">// named non-terminals</span>
+	= nonterminal: Nonterminal nonterminal !&gt;&gt; <span class="Constant">"["</span>
+	| parameter: <span class="Constant">"&amp;"</span> Nonterminal nonterminal 
+	| parametrized: Nonterminal nonterminal &gt;&gt; <span class="Constant">"["</span> <span class="Constant">"["</span> {Sym <span class="Constant">","</span>}+ parameters <span class="Constant">"]"</span>
+	| \start: <span class="Constant">"start"</span> <span class="Constant">"["</span> Nonterminal nonterminal <span class="Constant">"]"</span>
+	| labeled: Sym symbol NonterminalLabel label
+<span class="Comment">// literals </span>
+	| characterClass: Class charClass 
+	| literal: StringConstant string 
+	| caseInsensitiveLiteral: CaseInsensitiveStringConstant cistring
+<span class="Comment">// regular expressions</span>
+	| iter: Sym symbol <span class="Constant">"+"</span> 
+	| iterStar: Sym symbol <span class="Constant">"*"</span> 
+	| iterSep: <span class="Constant">"{"</span> Sym symbol Sym sep <span class="Constant">"}"</span> <span class="Constant">"+"</span> 
+	| iterStarSep: <span class="Constant">"{"</span> Sym symbol Sym sep <span class="Constant">"}"</span> <span class="Constant">"*"</span> 
+	| optional: Sym symbol <span class="Constant">"?"</span> 
+	| alternative: <span class="Constant">"("</span> Sym first <span class="Constant">"|"</span> {Sym <span class="Constant">"|"</span>}+ alternatives <span class="Constant">")"</span>
+	| sequence: <span class="Constant">"("</span> Sym first Sym+ sequence <span class="Constant">")"</span>
+	<span class="Comment">// TODO: MinimalIter: Sym symbol IntegerConstant minimal "+"</span>
+	<span class="Comment">// TODO: MinimalIterSep: "{" Sym symbol Symbol sep "}" IntegerConstant minimal "+"</span>
+	<span class="Comment">// TODO | Permutation: "(" Sym first "~" {Sym "~"}+ participants ")"</span>
+	<span class="Comment">// TODO | Combination: "(" Sym first "#" {Sym "#"}+ elements ")"</span>
+	| empty: <span class="Constant">"("</span> <span class="Constant">")"</span>
+<span class="Comment">// conditionals</span>
+	| column: Sym symbol <span class="Constant">"@"</span> IntegerLiteral column 
+	| endOfLine: Sym symbol <span class="Constant">"$"</span> 
+	| startOfLine: <span class="Constant">"^"</span> Sym symbol
+	| except:   Sym symbol <span class="Constant">"!"</span> NonterminalLabel label
+	&gt;  
+	<span class="Keyword">assoc</span> ( 
+	  <span class="Keyword">left</span>  ( follow:     Sym symbol  <span class="Constant">"\&gt;\&gt;"</span> Sym match
+	        | notFollow:  Sym symbol <span class="Constant">"!\&gt;\&gt;"</span> Sym match
+	        )
+	  | 
+	  <span class="Keyword">right</span> ( precede:    Sym match <span class="Constant">"\&lt;\&lt;"</span> Sym symbol 
+	        | notPrecede: Sym match <span class="Constant">"!\&lt;\&lt;"</span> Sym symbol
+	        )
+	)
+	&gt; 
+	<span class="Keyword">left</span> unequal:  Sym symbol <span class="Constant">"\\"</span> Sym match
+	;
+
+<span class="Keyword">lexical</span> TimePartNoTZ
+	= [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">2</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] ([<span class="Constant">,</span> <span class="Constant">.</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] ([<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]?)?)? 
+	| [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">2</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] <span class="Constant">":"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] <span class="Constant">":"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] ([<span class="Constant">,</span> <span class="Constant">.</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] ([<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]?)?)? 
+	;
+
+<span class="Keyword">syntax</span> Header
+	= parameters: Tags tags <span class="Constant">"module"</span> QualifiedName name ModuleParameters params Import* imports 
+	| \default: Tags tags <span class="Constant">"module"</span> QualifiedName name Import* imports ;
+
+<span class="Keyword">lexical</span> Name
+    <span class="Comment">// Names are surrounded by non-alphabetical characters, i.e. we want longest match.</span>
+	=  ([<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span> <span class="Constant">_</span>] !&lt;&lt; [<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]* !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]) \ RascalKeywords 
+	| [<span class="Constant">\\</span>] [<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] [<span class="Constant">\-</span> <span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]* !&gt;&gt; [<span class="Constant">\-</span> <span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] 
+	;
+
+<span class="Keyword">syntax</span> SyntaxDefinition
+	=  <span class="Comment">@Foldable</span> \layout  : Visibility vis <span class="Constant">"layout"</span>  Sym defined <span class="Constant">"="</span> Prod production <span class="Constant">";"</span> 
+	|  <span class="Comment">@Foldable</span> \lexical : <span class="Constant">"lexical"</span> Sym defined <span class="Constant">"="</span> Prod production <span class="Constant">";"</span> 
+	|  <span class="Comment">@Foldable</span> \keyword : <span class="Constant">"keyword"</span> Sym defined <span class="Constant">"="</span> Prod production <span class="Constant">";"</span>
+	|  <span class="Comment">@Foldable</span> language: Start start <span class="Constant">"syntax"</span> Sym defined <span class="Constant">"="</span> Prod production <span class="Constant">";"</span> ;
+
+<span class="Keyword">syntax</span> Kind
+	= function: <span class="Constant">"function"</span> 
+	| variable: <span class="Constant">"variable"</span> 
+	| \all: <span class="Constant">"all"</span> 
+	| \anno: <span class="Constant">"anno"</span> 
+	| \data: <span class="Constant">"data"</span> 
+	| view: <span class="Constant">"view"</span> 
+	| \alias: <span class="Constant">"alias"</span> 
+	| \module: <span class="Constant">"module"</span> 
+	| \tag: <span class="Constant">"tag"</span> ;
+
+<span class="Keyword">syntax</span> ImportedModule
+	= \default: QualifiedName name 
+	| actualsRenaming: QualifiedName name ModuleActuals actuals Renamings renamings 
+	| renamings: QualifiedName name Renamings renamings 
+	| actuals: QualifiedName name ModuleActuals actuals 
+	;
+
+<span class="Keyword">syntax</span> Target
+	= empty: 
+	| labeled: Name name ;
+
+<span class="Keyword">syntax</span> IntegerLiteral
+	= <span class="Comment">/*prefer()*/</span> decimalIntegerLiteral: DecimalIntegerLiteral decimal 
+	| <span class="Comment">/*prefer()*/</span> hexIntegerLiteral: HexIntegerLiteral hex 
+	| <span class="Comment">/*prefer()*/</span> octalIntegerLiteral: OctalIntegerLiteral octal ;
+
+<span class="Keyword">syntax</span> FunctionBody
+	= \default: <span class="Constant">"{"</span> Statement* statements <span class="Constant">"}"</span> ;
+    
+<span class="Keyword">syntax</span> Expression
+	= nonEmptyBlock  : <span class="Constant">"{"</span> Statement+ statements <span class="Constant">"}"</span> 
+	| <span class="Keyword">bracket</span> \bracket: <span class="Constant">"("</span> Expression expression <span class="Constant">")"</span> 
+	| closure        : Type type Parameters parameters <span class="Constant">"{"</span> Statement+ statements <span class="Constant">"}"</span> 
+	| stepRange      : <span class="Constant">"["</span> Expression first <span class="Constant">","</span> Expression second <span class="Constant">".."</span> Expression last <span class="Constant">"]"</span> 
+	| voidClosure    : Parameters parameters <span class="Constant">"{"</span> Statement* statements0 <span class="Constant">"}"</span> 
+	| \visit          : Label label Visit visit 
+	| reducer        : <span class="Constant">"("</span> Expression init <span class="Constant">"|"</span> Expression result <span class="Constant">"|"</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> 
+	| reifiedType    : <span class="Constant">"type"</span> <span class="Constant">"("</span> Expression symbol <span class="Constant">","</span> Expression definitions <span class="Constant">")"</span>  
+	| callOrTree     : Expression!transitiveClosure!transitiveReflexiveClosure!isDefined expression <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}* arguments KeywordArguments[Expression] keywordArguments <span class="Constant">")"</span>
+	| literal        : Literal literal 
+	| \any            : <span class="Constant">"any"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> 
+	| \all            : <span class="Constant">"all"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> 
+	| comprehension  : Comprehension comprehension 
+	| \set            : <span class="Constant">"{"</span> {Expression <span class="Constant">","</span>}* elements0 <span class="Constant">"}"</span> 
+	| \list           : <span class="Constant">"["</span> {Expression <span class="Constant">","</span>}* elements0 <span class="Constant">"]"</span>
+	| reifyType      : <span class="Constant">"#"</span> Type type !&gt;&gt; <span class="Constant">"["</span> !selector
+	| range          : <span class="Constant">"["</span> Expression first <span class="Constant">".."</span> Expression last <span class="Constant">"]"</span>
+	| \tuple          : <span class="Constant">"\&lt;"</span> {Expression <span class="Constant">","</span>}+ elements <span class="Constant">"\&gt;"</span> 
+	| \map            : <span class="Constant">"("</span> {Mapping[Expression] <span class="Constant">","</span>}* mappings <span class="Constant">")"</span> 
+	| \it             : [<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span> <span class="Constant">_</span>] !&lt;&lt; <span class="Constant">"it"</span> !&gt;&gt; [<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span> <span class="Constant">_</span>]
+	| qualifiedName  : QualifiedName qualifiedName 
+	| subscript    : Expression expression!transitiveClosure!transitiveReflexiveClosure!isDefined <span class="Constant">"["</span> {Expression <span class="Constant">","</span>}+ subscripts <span class="Constant">"]"</span>
+	| slice        : Expression expression!transitiveClosure!transitiveReflexiveClosure!isDefined <span class="Constant">"["</span> OptionalExpression optFirst <span class="Constant">".."</span> OptionalExpression optLast <span class="Constant">"]"</span> 
+    | sliceStep    : Expression expression!transitiveClosure!transitiveReflexiveClosure!isDefined <span class="Constant">"["</span> OptionalExpression optFirst <span class="Constant">","</span> Expression second <span class="Constant">".."</span> OptionalExpression optLast <span class="Constant">"]"</span> 
+	| fieldAccess  : Expression expression <span class="Constant">"."</span> Name field 
+	| fieldUpdate  : Expression expression <span class="Constant">"["</span> Name key <span class="Constant">"="</span> Expression replacement <span class="Constant">"]"</span> 
+	| fieldProject : Expression expression!transitiveClosure!transitiveReflexiveClosure!isDefined <span class="Constant">"\&lt;"</span> {Field <span class="Constant">","</span>}+ fields <span class="Constant">"\&gt;"</span> 
+	| setAnnotation: Expression expression <span class="Constant">"["</span> <span class="Constant">"@"</span> Name name <span class="Constant">"="</span> Expression value <span class="Constant">"]"</span> 
+    | getAnnotation: Expression expression <span class="Constant">"@"</span> Name name 
+	| is           : Expression expression <span class="Constant">"is"</span> Name name
+	| has          : Expression expression <span class="Constant">"has"</span> Name name
+	| transitiveClosure: Expression argument <span class="Constant">"+"</span> !&gt;&gt; <span class="Constant">"="</span>
+    | transitiveReflexiveClosure: Expression argument <span class="Constant">"*"</span> !&gt;&gt; <span class="Constant">"="</span> 
+	&gt; isDefined    : Expression argument <span class="Constant">"?"</span> 
+	&gt; negation     : <span class="Constant">"!"</span> Expression!match!noMatch argument 
+	| negative     : <span class="Constant">"-"</span> Expression argument 
+	| <span class="Keyword">non-assoc</span> splice : <span class="Constant">"*"</span> Expression argument
+	| asType       : <span class="Constant">"["</span> Type type <span class="Constant">"]"</span> Expression!match!noMatch argument
+	&gt; <span class="Keyword">left</span> composition: Expression lhs <span class="Constant">"o"</span> Expression rhs 
+	&gt; <span class="Keyword">left</span> ( product: Expression lhs <span class="Constant">"*"</span> () !&gt;&gt; <span class="Constant">"*"</span> Expression!noMatch!match rhs  
+		   | \join   : Expression lhs <span class="Constant">"join"</span> Expression rhs 
+	       | remainder: Expression lhs <span class="Constant">"%"</span> Expression rhs
+		   | division: Expression lhs <span class="Constant">"/"</span> Expression rhs 
+	     )
+	&gt; <span class="Keyword">left</span> intersection: Expression lhs <span class="Constant">"&amp;"</span> !&gt;&gt; <span class="Constant">"&amp;"</span> Expression rhs 
+	&gt; <span class="Keyword">left</span> ( addition   : Expression lhs <span class="Constant">"+"</span> Expression!noMatch!match rhs  
+		   | subtraction: Expression!transitiveClosure!transitiveReflexiveClosure lhs <span class="Constant">"-"</span> Expression rhs
+		   | appendAfter: Expression lhs <span class="Constant">"\&lt;\&lt;"</span> !&gt;&gt; <span class="Constant">"="</span> Expression rhs
+		   | insertBefore: Expression lhs <span class="Constant">"\&gt;\&gt;"</span> Expression rhs 
+	       )
+	&gt; <span class="Keyword">left</span> modulo: Expression lhs <span class="Constant">"mod"</span> Expression rhs
+	&gt; <span class="Keyword">non-assoc</span> ( notIn: Expression lhs <span class="Constant">"notin"</span> Expression rhs  
+		        | \in: Expression lhs <span class="Constant">"in"</span> Expression rhs 
+	)
+	&gt; <span class="Keyword">non-assoc</span> ( greaterThanOrEq: Expression lhs <span class="Constant">"\&gt;="</span> Expression rhs  
+		        | lessThanOrEq   : Expression lhs <span class="Constant">"\&lt;="</span> Expression rhs 
+		        | lessThan       : Expression lhs <span class="Constant">"\&lt;"</span> !&gt;&gt; <span class="Constant">"-"</span> Expression rhs 
+		        | greaterThan    : Expression lhs <span class="Constant">"\&gt;"</span> Expression rhs 
+	            )
+	&gt; <span class="Keyword">non-assoc</span> ( equals         : Expression lhs <span class="Constant">"=="</span> Expression rhs
+	            | nonEquals      : Expression lhs <span class="Constant">"!="</span> Expression rhs 
+	            )
+	&gt; <span class="Keyword">non-assoc</span> ifDefinedOtherwise: Expression lhs <span class="Constant">"?"</span> Expression rhs
+	&gt; <span class="Keyword">non-assoc</span> ( noMatch: Pattern pattern <span class="Constant">"!:="</span> Expression expression  
+		        | match: Pattern pattern <span class="Constant">":="</span> Expression expression 
+		        | enumerator: Pattern pattern <span class="Constant">"\&lt;-"</span> Expression expression 
+	            ) 
+	&gt; <span class="Keyword">non-assoc</span> ( implication: Expression lhs <span class="Constant">"==\&gt;"</span> Expression rhs  
+		        | equivalence: Expression lhs <span class="Constant">"\&lt;==\&gt;"</span> Expression rhs 
+	            )
+	&gt; <span class="Keyword">left</span> and: Expression lhs <span class="Constant">"&amp;&amp;"</span> Expression rhs 
+	&gt; <span class="Keyword">left</span> or: Expression lhs <span class="Constant">"||"</span> Expression rhs 
+	&gt; <span class="Keyword">right</span> ifThenElse: Expression condition <span class="Constant">"?"</span> Expression thenExp <span class="Constant">":"</span> Expression elseExp
+	; 
+
+<span class="Keyword">syntax</span> OptionalExpression 
+  = expression: Expression expression
+  | noExpression: ()
+  ;
+    
+<span class="Keyword">syntax</span> UserType
+	= name: QualifiedName name 
+	| parametric: QualifiedName name &gt;&gt; <span class="Constant">"["</span> <span class="Constant">"["</span> {Type <span class="Constant">","</span>}+ parameters <span class="Constant">"]"</span> ;
+
+<span class="Keyword">syntax</span> Import
+	= \extend: <span class="Constant">"extend"</span> ImportedModule module <span class="Constant">";"</span> 
+	| \default: <span class="Constant">"import"</span> ImportedModule module <span class="Constant">";"</span>
+	| \external: <span class="Constant">"import"</span> QualifiedName name <span class="Constant">"="</span> LocationLiteral at <span class="Constant">";"</span>
+	| \syntax: SyntaxDefinition syntax ;
+
+<span class="Keyword">syntax</span> Body
+	= toplevels: Toplevel* toplevels ;
+
+<span class="Keyword">lexical</span> URLChars
+	= ![<span class="Constant">\t</span><span class="Keyword">-</span><span class="Constant">\n</span> <span class="Constant">\r</span> <span class="Constant">\ </span> <span class="Constant">\&lt;</span> <span class="Constant">|</span>]* ;
+
+<span class="Keyword">lexical</span> TimeZonePart
+	= [<span class="Constant">+</span> <span class="Constant">\-</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">1</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] <span class="Constant">":"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] 
+	| <span class="Constant">"Z"</span> 
+	| [<span class="Constant">+</span> <span class="Constant">\-</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">1</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] 
+	| [<span class="Constant">+</span> <span class="Constant">\-</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">1</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">5</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] 
+	;
+
+<span class="Keyword">syntax</span> ProtocolPart
+	= nonInterpolated: ProtocolChars protocolChars 
+	| interpolated: PreProtocolChars pre Expression expression ProtocolTail tail ;
+
+<span class="Keyword">syntax</span> StringTemplate
+	= ifThen    : <span class="Constant">"if"</span>    <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">")"</span> <span class="Constant">"{"</span> Statement* preStats StringMiddle body Statement* postStats <span class="Constant">"}"</span> 
+	| ifThenElse: <span class="Constant">"if"</span>    <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">")"</span> <span class="Constant">"{"</span> Statement* preStatsThen StringMiddle thenString Statement* postStatsThen <span class="Constant">"}"</span> <span class="Constant">"else"</span> <span class="Constant">"{"</span> Statement* preStatsElse StringMiddle elseString Statement* postStatsElse <span class="Constant">"}"</span> 
+	| \for       : <span class="Constant">"for"</span>   <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> <span class="Constant">"{"</span> Statement* preStats StringMiddle body Statement* postStats <span class="Constant">"}"</span> 
+	| doWhile   : <span class="Constant">"do"</span>    <span class="Constant">"{"</span> Statement* preStats StringMiddle body Statement* postStats <span class="Constant">"}"</span> <span class="Constant">"while"</span> <span class="Constant">"("</span> Expression condition <span class="Constant">")"</span> 
+	| \while     : <span class="Constant">"while"</span> <span class="Constant">"("</span> Expression condition <span class="Constant">")"</span> <span class="Constant">"{"</span> Statement* preStats StringMiddle body Statement* postStats <span class="Constant">"}"</span> ;
+
+<span class="Keyword">lexical</span> PreStringChars
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> [<span class="Constant">\"</span>] StringCharacter* [<span class="Constant">\&lt;</span>] ;
+
+<span class="Keyword">lexical</span> CaseInsensitiveStringConstant
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> <span class="Constant">"\'"</span> StringCharacter* chars <span class="Constant">"\'"</span> ;
+
+<span class="Keyword">lexical</span> Backslash
+	= [<span class="Constant">\\</span>] !&gt;&gt; [<span class="Constant">/</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] ;
+
+<span class="Keyword">syntax</span> Label
+	= \default: Name name <span class="Constant">":"</span> 
+	| empty: ;
+
+<span class="Keyword">lexical</span> MidProtocolChars
+	= <span class="Constant">"\&gt;"</span> URLChars <span class="Constant">"\&lt;"</span> ;
+
+<span class="Keyword">lexical</span> NamedBackslash
+	= [<span class="Constant">\\</span>] !&gt;&gt; [<span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] ;
+
+<span class="Keyword">syntax</span> Field
+	= index: IntegerLiteral fieldIndex 
+	| name: Name fieldName ;
+
+<span class="Keyword">lexical</span> JustDate
+	= <span class="Constant">"$"</span> DatePart <span class="Constant">"$"</span>;
+
+<span class="Keyword">lexical</span> PostPathChars
+	=  <span class="Constant">"\&gt;"</span> URLChars <span class="Constant">"|"</span> ;
+
+<span class="Keyword">syntax</span> PathPart
+	= nonInterpolated: PathChars pathChars 
+	| interpolated: PrePathChars pre Expression expression PathTail tail ;
+
+<span class="Keyword">lexical</span> DatePart
+	= [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] <span class="Constant">"-"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">1</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] <span class="Constant">"-"</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">3</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] 
+	| [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">1</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">3</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>] ;
+
+<span class="Keyword">syntax</span> FunctionModifier
+	= java: <span class="Constant">"java"</span> 
+	| \test: <span class="Constant">"test"</span> 
+	| \default: <span class="Constant">"default"</span>;
+
+<span class="Keyword">syntax</span> Assignment
+	= ifDefined: <span class="Constant">"?="</span> 
+	| division: <span class="Constant">"/="</span> 
+	| product: <span class="Constant">"*="</span> 
+	| intersection: <span class="Constant">"&amp;="</span> 
+	| subtraction: <span class="Constant">"-="</span> 
+	| \default: <span class="Constant">"="</span> 
+	| addition: <span class="Constant">"+="</span> 
+	| \append: <span class="Constant">"\&lt;\&lt;="</span>
+	;
+
+<span class="Keyword">syntax</span> Assignable
+	= <span class="Keyword">bracket</span> \bracket   : <span class="Constant">"("</span> Assignable arg <span class="Constant">")"</span>
+	| variable          : QualifiedName qualifiedName
+    | subscript         : Assignable receiver <span class="Constant">"["</span> Expression subscript <span class="Constant">"]"</span> 
+    | slice             : Assignable receiver <span class="Constant">"["</span> OptionalExpression optFirst <span class="Constant">".."</span> OptionalExpression optLast <span class="Constant">"]"</span> 
+    | sliceStep         : Assignable receiver <span class="Constant">"["</span> OptionalExpression optFirst <span class="Constant">","</span> Expression second <span class="Constant">".."</span> OptionalExpression optLast <span class="Constant">"]"</span>     
+	| fieldAccess       : Assignable receiver <span class="Constant">"."</span> Name field 
+	| ifDefinedOrDefault: Assignable receiver <span class="Constant">"?"</span> Expression defaultExpression 
+	| constructor       : Name name <span class="Constant">"("</span> {Assignable <span class="Constant">","</span>}+ arguments <span class="Constant">")"</span>  
+	| \tuple             : <span class="Constant">"\&lt;"</span> {Assignable <span class="Constant">","</span>}+ elements <span class="Constant">"\&gt;"</span> 
+	| annotation        : Assignable receiver <span class="Constant">"@"</span> Name annotation  ;
+
+<span class="Keyword">lexical</span> StringConstant
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> <span class="Constant">"\""</span> StringCharacter* chars <span class="Constant">"\""</span> ;
+
+
+
+<span class="Keyword">syntax</span> Assoc
+	= associative: <span class="Constant">"assoc"</span> 
+	| left: <span class="Constant">"left"</span> 
+	| nonAssociative: <span class="Constant">"non-assoc"</span> 
+	| right: <span class="Constant">"right"</span> ;
+
+<span class="Keyword">syntax</span> Replacement
+	= unconditional: Expression replacementExpression 
+	| conditional: Expression replacementExpression <span class="Constant">"when"</span> {Expression <span class="Constant">","</span>}+ conditions ;
+
+<span class="Keyword">syntax</span> DataTarget
+	= empty: 
+	| labeled: Name label <span class="Constant">":"</span> ;
+
+<span class="Keyword">lexical</span> StringCharacter
+	= <span class="Constant">"\\"</span> [<span class="Constant">\"</span> <span class="Constant">\'</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span> <span class="Constant">b</span> <span class="Constant">f</span> <span class="Constant">n</span> <span class="Constant">r</span> <span class="Constant">t</span>] 
+	| UnicodeEscape 
+	| ![<span class="Constant">\"</span> <span class="Constant">\'</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>]
+	| [<span class="Constant">\n</span>][<span class="Constant">\ </span><span class="Constant">\t</span> <span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>]* [<span class="Constant">\'</span>] <span class="Comment">// margin </span>
+	;
+
+<span class="Keyword">lexical</span> JustTime
+	= <span class="Constant">"$T"</span> TimePartNoTZ !&gt;&gt; [<span class="Constant">+</span><span class="Constant">\-</span>] <span class="Constant">"$"</span>
+	| <span class="Constant">"$T"</span> TimePartNoTZ TimeZonePart <span class="Constant">"$"</span>
+	;
+
+<span class="Keyword">lexical</span> MidStringChars
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> [<span class="Constant">\&gt;</span>] StringCharacter* [<span class="Constant">\&lt;</span>] ;
+
+<span class="Keyword">lexical</span> ProtocolChars
+	= [<span class="Constant">|</span>] URLChars <span class="Constant">"://"</span> !&gt;&gt; [<span class="Constant">\t</span><span class="Keyword">-</span><span class="Constant">\n</span> <span class="Constant">\r</span> <span class="Constant">\ </span><span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>];
+
+<span class="Keyword">lexical</span> RegExpModifier
+	= [<span class="Constant">d</span> <span class="Constant">i</span> <span class="Constant">m</span> <span class="Constant">s</span>]* ;
+
+<span class="Keyword">syntax</span> CommonKeywordParameters 
+  = absent: ()
+  | present: <span class="Constant">"("</span> {KeywordFormal <span class="Constant">","</span>}+ keywordFormalList <span class="Constant">")"</span>
+  ;
+    
+<span class="Keyword">syntax</span> Parameters
+	= \default: <span class="Constant">"("</span> Formals formals KeywordFormals keywordFormals <span class="Constant">")"</span> 
+	| varArgs: <span class="Constant">"("</span> Formals formals <span class="Constant">"..."</span> KeywordFormals keywordFormals <span class="Constant">")"</span> ;
+
+<span class="Keyword">lexical</span> OptionalComma = \default: <span class="Constant">","</span>? ;
+
+<span class="Keyword">syntax</span> KeywordFormals
+    = \default: OptionalComma optionalComma [<span class="Constant">,</span><span class="Constant">\ </span><span class="Constant">(</span><span class="Constant">\t</span><span class="Constant">\n</span>] &lt;&lt; {KeywordFormal <span class="Constant">","</span>}+ keywordFormalList
+    | none: ()
+    ;
+    
+<span class="Keyword">syntax</span> KeywordFormal 
+    = \default: Type type Name name <span class="Constant">"="</span> Expression expression
+    ;
+    
+<span class="Keyword">syntax</span> KeywordArguments[&amp;T]
+    = \default:  OptionalComma optionalComma [<span class="Constant">,</span><span class="Constant">\ </span><span class="Constant">(</span><span class="Constant">\t</span><span class="Constant">\n</span>] &lt;&lt; {KeywordArgument[&amp;T] <span class="Constant">","</span>}+ keywordArgumentList
+    | none: ()
+    ;
+    
+<span class="Keyword">syntax</span> KeywordArgument[&amp;T] = \default: Name name <span class="Constant">"="</span> &amp;T expression ;
+
+<span class="Keyword">lexical</span> RegExp
+	= ![<span class="Constant">/</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] 
+	| <span class="Constant">"\&lt;"</span> Name <span class="Constant">"\&gt;"</span> 
+	| [<span class="Constant">\\</span>] [<span class="Constant">/</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] 
+	| <span class="Constant">"\&lt;"</span> Name <span class="Constant">":"</span> NamedRegExp* <span class="Constant">"\&gt;"</span> 
+	| Backslash 
+	<span class="Comment">// | @category="MetaVariable" [\&lt;]  Expression expression [\&gt;] TODO: find out why this production existed </span>
+	;
+	
+
+<span class="Keyword">layout</span> LAYOUTLIST
+	= LAYOUT* !&gt;&gt; [<span class="Constant">\u0009</span><span class="Keyword">-</span><span class="Constant">\u000D</span> <span class="Constant">\u0020</span> <span class="Constant">\u0085</span> <span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u180E</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u2028</span> <span class="Constant">\u2029</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>] !&gt;&gt; <span class="Constant">"//"</span> !&gt;&gt; <span class="Constant">"/*"</span>;
+
+<span class="Keyword">syntax</span> LocalVariableDeclaration
+	= \default: Declarator declarator 
+	| \dynamic: <span class="Constant">"dynamic"</span> Declarator declarator ;
+
+<span class="Keyword">lexical</span> RealLiteral
+	= [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>] 
+	| [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">E</span> <span class="Constant">e</span>] [<span class="Constant">+</span> <span class="Constant">\-</span>]? [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>]?
+	| [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ <span class="Constant">"."</span> !&gt;&gt; <span class="Constant">"."</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>]?  
+	| [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ <span class="Constant">"."</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* [<span class="Constant">E</span> <span class="Constant">e</span>] [<span class="Constant">+</span> <span class="Constant">\-</span>]? [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>]? 
+	| [<span class="Constant">.</span>] !&lt;&lt; <span class="Constant">"."</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>]? 
+	| [<span class="Constant">.</span>] !&lt;&lt; <span class="Constant">"."</span> [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">E</span> <span class="Constant">e</span>] [<span class="Constant">+</span> <span class="Constant">\-</span>]? [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]+ [<span class="Constant">D</span> <span class="Constant">F</span> <span class="Constant">d</span> <span class="Constant">f</span>]? 
+	;
+
+<span class="Keyword">syntax</span> Range
+	= fromTo: Char start <span class="Constant">"-"</span> Char end 
+	| character: Char character ;
+
+<span class="Keyword">syntax</span> LocationLiteral
+	= \default: ProtocolPart protocolPart PathPart pathPart ;
+
+<span class="Keyword">syntax</span> ShellCommand
+	= setOption: <span class="Constant">"set"</span> QualifiedName name Expression expression 
+	| undeclare: <span class="Constant">"undeclare"</span> QualifiedName name 
+	| help: <span class="Constant">"help"</span> 
+	| edit: <span class="Constant">"edit"</span> QualifiedName name 
+	| unimport: <span class="Constant">"unimport"</span> QualifiedName name 
+	| listDeclarations: <span class="Constant">"declarations"</span> 
+	| quit: <span class="Constant">"quit"</span> 
+	| history: <span class="Constant">"history"</span> 
+	| \test: <span class="Constant">"test"</span> 
+	| listModules: <span class="Constant">"modules"</span> 
+	| clear: <span class="Constant">"clear"</span>;
+
+<span class="Keyword">syntax</span> StringMiddle
+	= mid: MidStringChars mid 
+	| template: MidStringChars mid StringTemplate template StringMiddle tail 
+	| interpolated: MidStringChars mid Expression expression StringMiddle tail ;
+
+<span class="Keyword">syntax</span> QualifiedName
+	= \default: {Name <span class="Constant">"::"</span>}+ names !&gt;&gt; <span class="Constant">"::"</span> ;
+
+<span class="Keyword">lexical</span> RationalLiteral
+   = [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>][<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* [<span class="Constant">r</span>]
+   | [<span class="Constant">1</span><span class="Keyword">-</span><span class="Constant">9</span>][<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* [<span class="Constant">r</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>][<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]
+   ;
+
+<span class="Keyword">lexical</span> DecimalIntegerLiteral
+	= <span class="Constant">"0"</span> !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] 
+	| [<span class="Constant">1</span><span class="Keyword">-</span><span class="Constant">9</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span>]* !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] ;
+
+<span class="Keyword">syntax</span> DataTypeSelector
+	= selector: QualifiedName sort <span class="Constant">"."</span> Name production ;
+
+<span class="Keyword">syntax</span> StringTail
+	= midInterpolated: MidStringChars mid Expression expression StringTail tail 
+	| post: PostStringChars post 
+	| midTemplate: MidStringChars mid StringTemplate template StringTail tail ;
+
+<span class="Keyword">syntax</span> PatternWithAction
+	= replacing: Pattern pattern <span class="Constant">"=\&gt;"</span> Replacement replacement 
+	| arbitrary: Pattern pattern <span class="Constant">":"</span> Statement statement ;
+
+<span class="Keyword">lexical</span> LAYOUT
+	= Comment 
+	<span class="Comment">// all the white space chars defined in Unicode 6.0 </span>
+	| [<span class="Constant">\u0009</span><span class="Keyword">-</span><span class="Constant">\u000D</span> <span class="Constant">\u0020</span> <span class="Constant">\u0085</span> <span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u180E</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u2028</span> <span class="Constant">\u2029</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>] 
+	;
+
+<span class="Keyword">syntax</span> Visit
+	= givenStrategy: Strategy strategy <span class="Constant">"visit"</span> <span class="Constant">"("</span> Expression subject <span class="Constant">")"</span> <span class="Constant">"{"</span> Case+ cases <span class="Constant">"}"</span> 
+	| defaultStrategy: <span class="Constant">"visit"</span> <span class="Constant">"("</span> Expression subject <span class="Constant">")"</span> <span class="Constant">"{"</span> Case+ cases <span class="Constant">"}"</span> ;
+
+<span class="Keyword">start</span> <span class="Keyword">syntax</span> Commands
+	= \commandlist: EvalCommand+ commands
+	;
+
+<span class="Keyword">start</span> <span class="Keyword">syntax</span> EvalCommand
+  = declaration: Declaration declaration  
+  | statement: Statement!variableDeclaration!functionDeclaration!visit statement 
+  | \import: Import imported ;
+  
+<span class="Keyword">start</span> <span class="Keyword">syntax</span> Command
+	= expression: Expression!nonEmptyBlock expression 
+	| declaration: Declaration declaration 
+	| shell: <span class="Constant">":"</span> ShellCommand command 
+	| statement: Statement!variableDeclaration!functionDeclaration!visit statement 
+	| \import: Import imported ;
+
+<span class="Keyword">lexical</span> TagString
+	= <span class="Constant">"\\"</span> !&lt;&lt; <span class="Constant">"{"</span> ( ![<span class="Constant">{</span><span class="Constant">}</span>] | (<span class="Constant">"\\"</span> [<span class="Constant">{</span><span class="Constant">}</span>]) | TagString)* contents <span class="Constant">"\\"</span> !&lt;&lt; <span class="Constant">"}"</span>;
+
+<span class="Keyword">syntax</span> ProtocolTail
+	= mid: MidProtocolChars mid Expression expression ProtocolTail tail 
+	| post: PostProtocolChars post ;
+
+<span class="Keyword">lexical</span> Nonterminal
+	= ([<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span>] !&lt;&lt; [<span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]* !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]) \ RascalKeywords;
+
+<span class="Keyword">syntax</span> PathTail
+	= mid: MidPathChars mid Expression expression PathTail tail 
+	| post: PostPathChars post ;
+
+<span class="Keyword">syntax</span> Visibility
+	= \private: <span class="Constant">"private"</span> 
+	| \default: 
+	| \public: <span class="Constant">"public"</span> ;
+
+<span class="Keyword">syntax</span> StringLiteral
+	= template: PreStringChars pre StringTemplate template StringTail tail 
+	| interpolated: PreStringChars pre Expression expression StringTail tail 
+	| nonInterpolated: StringConstant constant ;
+
+<span class="Keyword">lexical</span> Comment
+	= <span class="Comment">@category=<span class="Constant">"Comment"</span></span> <span class="Constant">"/*"</span> (![<span class="Constant">*</span>] | [<span class="Constant">*</span>] !&gt;&gt; [<span class="Constant">/</span>])* <span class="Constant">"*/"</span> 
+	| <span class="Comment">@category=<span class="Constant">"Comment"</span></span> <span class="Constant">"//"</span> ![<span class="Constant">\n</span>]* !&gt;&gt; [<span class="Constant">\ </span><span class="Constant">\t</span><span class="Constant">\r</span> <span class="Constant">\u00A0</span> <span class="Constant">\u1680</span> <span class="Constant">\u2000</span><span class="Keyword">-</span><span class="Constant">\u200A</span> <span class="Constant">\u202F</span> <span class="Constant">\u205F</span> <span class="Constant">\u3000</span>] $ <span class="Comment">// the restriction helps with parsing speed</span>
+	;
+	
+
+<span class="Keyword">syntax</span> Renamings
+	= \default: <span class="Constant">"renaming"</span> {Renaming <span class="Constant">","</span>}+ renamings ;
+
+<span class="Keyword">syntax</span> Tags
+	= \default: Tag* tags ;
+
+<span class="Keyword">syntax</span> Formals
+	= \default: {Pattern <span class="Constant">","</span>}* formals ;
+
+<span class="Keyword">lexical</span> PostProtocolChars
+	= <span class="Constant">"\&gt;"</span> URLChars <span class="Constant">"://"</span> ;
+
+<span class="Keyword">syntax</span> Start
+	= absent: 
+	| present: <span class="Constant">"start"</span> ;
+
+<span class="Keyword">syntax</span> Statement
+	= <span class="Comment">@breakable</span> \assert: <span class="Constant">"assert"</span> Expression expression <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> assertWithMessage: <span class="Constant">"assert"</span> Expression expression <span class="Constant">":"</span> Expression message <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> expression: Expression!visit!nonEmptyBlock expression <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> \visit: Label label Visit visit 
+	| <span class="Comment">@breakable</span> \while: Label label <span class="Constant">"while"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">")"</span> Statement!variableDeclaration!functionDeclaration body 
+	| <span class="Comment">@breakable</span> doWhile: Label label <span class="Constant">"do"</span> Statement body <span class="Constant">"while"</span> <span class="Constant">"("</span> Expression condition <span class="Constant">")"</span> <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> <span class="Comment">@breakable{generators}</span> \for: Label label <span class="Constant">"for"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> Statement body 
+	| <span class="Comment">@breakable</span> ifThen: Label label <span class="Constant">"if"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">")"</span> Statement!variableDeclaration!functionDeclaration thenStatement () !&gt;&gt; <span class="Constant">"else"</span> 
+	| <span class="Comment">@breakable</span> ifThenElse: Label label <span class="Constant">"if"</span> <span class="Constant">"("</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">")"</span> Statement thenStatement <span class="Constant">"else"</span> Statement!variableDeclaration!functionDeclaration elseStatement 
+	| <span class="Comment">@breakable</span> \switch: Label label <span class="Constant">"switch"</span> <span class="Constant">"("</span> Expression expression <span class="Constant">")"</span> <span class="Constant">"{"</span> Case+ cases <span class="Constant">"}"</span> 
+	| <span class="Comment">@breakable</span> \fail: <span class="Constant">"fail"</span> Target target <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> \break: <span class="Constant">"break"</span> Target target <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> \continue: <span class="Constant">"continue"</span> Target target <span class="Constant">";"</span> 
+    | <span class="Comment">@breakable</span> \filter: <span class="Constant">"filter"</span> <span class="Constant">";"</span>
+	| <span class="Comment">@breakable</span> \solve: <span class="Constant">"solve"</span> <span class="Constant">"("</span> {QualifiedName <span class="Constant">","</span>}+ variables Bound bound <span class="Constant">")"</span> Statement!variableDeclaration!functionDeclaration body 
+	| <span class="Comment">@breakable</span> <span class="Keyword">non-assoc</span> \try: <span class="Constant">"try"</span> Statement body Catch+ handlers 
+	| <span class="Comment">@breakable</span> tryFinally: <span class="Constant">"try"</span> Statement body Catch+ handlers <span class="Constant">"finally"</span> Statement!variableDeclaration!functionDeclaration finallyBody 
+	| nonEmptyBlock: Label label <span class="Constant">"{"</span> Statement+ statements <span class="Constant">"}"</span> 
+	| emptyStatement: <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> globalDirective: <span class="Constant">"global"</span> Type type {QualifiedName <span class="Constant">","</span>}+ names <span class="Constant">";"</span> 
+	| <span class="Comment">@breakable</span> assignment: Assignable assignable Assignment operator Statement!functionDeclaration!variableDeclaration statement
+	| <span class="Keyword">non-assoc</span>  ( 
+		          <span class="Comment">@breakable</span> \return    : <span class="Constant">"return"</span> Statement!functionDeclaration!variableDeclaration statement  
+		        | <span class="Comment">@breakable</span> \throw     : <span class="Constant">"throw"</span> Statement!functionDeclaration!variableDeclaration statement 
+		        | <span class="Comment">@breakable</span> \insert    : <span class="Constant">"insert"</span> DataTarget dataTarget Statement!functionDeclaration!variableDeclaration statement 
+		        | <span class="Comment">@breakable</span> \append    : <span class="Constant">"append"</span> DataTarget dataTarget Statement!functionDeclaration!variableDeclaration statement 
+	            )
+    | <span class="Comment">@breakable</span> functionDeclaration: FunctionDeclaration functionDeclaration 
+	| <span class="Comment">@breakable</span> variableDeclaration: LocalVariableDeclaration declaration <span class="Constant">";"</span>
+	; 
+	
+    
+<span class="Keyword">syntax</span> StructuredType
+	= \default: BasicType basicType <span class="Constant">"["</span> {TypeArg <span class="Constant">","</span>}+ arguments <span class="Constant">"]"</span> ;
+
+<span class="Keyword">lexical</span> NonterminalLabel
+	= [<span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>]* !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] ;
+
+<span class="Keyword">syntax</span> FunctionType
+	= typeArguments: Type type <span class="Constant">"("</span> {TypeArg <span class="Constant">","</span>}* arguments <span class="Constant">")"</span> ;
+
+<span class="Keyword">syntax</span> Case
+	= <span class="Comment">@Foldable</span> patternWithAction: <span class="Constant">"case"</span> PatternWithAction patternWithAction 
+	| <span class="Comment">@Foldable</span> \default: <span class="Constant">"default"</span> <span class="Constant">":"</span> Statement statement ;
+
+<span class="Keyword">syntax</span> Declarator
+	= \default: Type type {Variable <span class="Constant">","</span>}+ variables ;
+
+<span class="Keyword">syntax</span> Bound
+	= \default: <span class="Constant">";"</span> Expression expression 
+	| empty: ;
+
+<span class="Keyword">keyword</span> RascalKeywords
+	= <span class="Constant">"o"</span>
+	| <span class="Constant">"syntax"</span>
+	| <span class="Constant">"keyword"</span>
+	| <span class="Constant">"lexical"</span>
+	| <span class="Constant">"int"</span>
+	| <span class="Constant">"break"</span>
+	| <span class="Constant">"continue"</span>
+	| <span class="Constant">"rat"</span> 
+	| <span class="Constant">"true"</span> 
+	| <span class="Constant">"bag"</span> 
+	| <span class="Constant">"num"</span> 
+	| <span class="Constant">"node"</span> 
+	| <span class="Constant">"finally"</span> 
+	| <span class="Constant">"private"</span> 
+	| <span class="Constant">"real"</span> 
+	| <span class="Constant">"list"</span> 
+	| <span class="Constant">"fail"</span> 
+	| <span class="Constant">"filter"</span> 
+	| <span class="Constant">"if"</span> 
+	| <span class="Constant">"tag"</span> 
+	| BasicType
+	| <span class="Constant">"extend"</span> 
+	| <span class="Constant">"append"</span> 
+	| <span class="Constant">"rel"</span> 
+	| <span class="Constant">"lrel"</span>
+	| <span class="Constant">"void"</span> 
+	| <span class="Constant">"non-assoc"</span> 
+	| <span class="Constant">"assoc"</span> 
+	| <span class="Constant">"test"</span> 
+	| <span class="Constant">"anno"</span> 
+	| <span class="Constant">"layout"</span> 
+	| <span class="Constant">"data"</span> 
+	| <span class="Constant">"join"</span> 
+	| <span class="Constant">"it"</span> 
+	| <span class="Constant">"bracket"</span> 
+	| <span class="Constant">"in"</span> 
+	| <span class="Constant">"import"</span> 
+	| <span class="Constant">"false"</span> 
+	| <span class="Constant">"all"</span> 
+	| <span class="Constant">"dynamic"</span> 
+	| <span class="Constant">"solve"</span> 
+	| <span class="Constant">"type"</span> 
+	| <span class="Constant">"try"</span> 
+	| <span class="Constant">"catch"</span> 
+	| <span class="Constant">"notin"</span> 
+	| <span class="Constant">"else"</span> 
+	| <span class="Constant">"insert"</span> 
+	| <span class="Constant">"switch"</span> 
+	| <span class="Constant">"return"</span> 
+	| <span class="Constant">"case"</span> 
+	| <span class="Constant">"while"</span> 
+	| <span class="Constant">"str"</span> 
+	| <span class="Constant">"throws"</span> 
+	| <span class="Constant">"visit"</span> 
+	| <span class="Constant">"tuple"</span> 
+	| <span class="Constant">"for"</span> 
+	| <span class="Constant">"assert"</span> 
+	| <span class="Constant">"loc"</span> 
+	| <span class="Constant">"default"</span> 
+	| <span class="Constant">"map"</span> 
+	| <span class="Constant">"alias"</span> 
+	| <span class="Constant">"any"</span> 
+	| <span class="Constant">"module"</span> 
+	| <span class="Constant">"mod"</span>
+	| <span class="Constant">"bool"</span> 
+	| <span class="Constant">"public"</span> 
+	| <span class="Constant">"one"</span> 
+	| <span class="Constant">"throw"</span> 
+	| <span class="Constant">"set"</span> 
+	| <span class="Constant">"start"</span>
+	| <span class="Constant">"datetime"</span> 
+	| <span class="Constant">"value"</span> 
+	;
+
+<span class="Keyword">syntax</span> Type
+	= <span class="Keyword">bracket</span> \bracket: <span class="Constant">"("</span> Type type <span class="Constant">")"</span> 
+	| user: UserType user
+	| function: FunctionType function 
+	| structured: StructuredType structured 
+	| basic: BasicType basic 
+	| selector: DataTypeSelector selector 
+	| variable: TypeVar typeVar 
+	| symbol: Sym!nonterminal!labeled!parametrized!parameter symbol
+	;
+
+<span class="Keyword">syntax</span> Declaration
+	= variable    : Tags tags Visibility visibility Type type {Variable <span class="Constant">","</span>}+ variables <span class="Constant">";"</span> 
+	| annotation  : Tags tags Visibility visibility <span class="Constant">"anno"</span> Type annoType Type onType <span class="Constant">"@"</span> Name name <span class="Constant">";"</span> 
+	| \alias       : Tags tags Visibility visibility <span class="Constant">"alias"</span> UserType user <span class="Constant">"="</span> Type base <span class="Constant">";"</span> 
+	| \tag         : Tags tags Visibility visibility <span class="Constant">"tag"</span> Kind kind Name name <span class="Constant">"on"</span> {Type <span class="Constant">","</span>}+ types <span class="Constant">";"</span> 
+	| dataAbstract: Tags tags Visibility visibility <span class="Constant">"data"</span> UserType user CommonKeywordParameters commonKeywordParameters <span class="Constant">";"</span> 
+	| <span class="Comment">@Foldable</span> \data : Tags tags Visibility visibility <span class="Constant">"data"</span> UserType user CommonKeywordParameters commonKeywordParameters<span class="Constant">"="</span> {Variant <span class="Constant">"|"</span>}+ variants <span class="Constant">";"</span>
+	| function       : FunctionDeclaration functionDeclaration 
+	;
+
+<span class="Keyword">syntax</span> Class
+	= simpleCharclass: <span class="Constant">"["</span> Range* ranges <span class="Constant">"]"</span> 
+	| complement: <span class="Constant">"!"</span> Class charClass 
+	&gt; <span class="Keyword">left</span> difference: Class lhs <span class="Constant">"-"</span> Class rhs 
+	&gt; <span class="Keyword">left</span> intersection: Class lhs <span class="Constant">"&amp;&amp;"</span> Class rhs 
+	&gt; <span class="Keyword">left</span> union: Class lhs <span class="Constant">"||"</span> Class rhs 
+	| <span class="Keyword">bracket</span> \bracket: <span class="Constant">"("</span> Class charclass <span class="Constant">")"</span> ;
+
+<span class="Keyword">lexical</span> RegExpLiteral
+	= <span class="Constant">"/"</span> RegExp* <span class="Constant">"/"</span> RegExpModifier ;
+
+<span class="Keyword">syntax</span> FunctionModifiers
+	= \modifierlist: FunctionModifier* modifiers ;
+
+<span class="Keyword">syntax</span> Comprehension
+	= <span class="Comment">@breakable{results,generators}</span> \set: <span class="Constant">"{"</span> {Expression <span class="Constant">","</span>}+ results <span class="Constant">"|"</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">"}"</span> 
+	| <span class="Comment">@breakable{from,to,generators}</span> \map: <span class="Constant">"("</span> Expression from <span class="Constant">":"</span> Expression to <span class="Constant">"|"</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">")"</span> 
+	| <span class="Comment">@breakable{results,generators}</span> \list: <span class="Constant">"["</span> {Expression <span class="Constant">","</span>}+ results <span class="Constant">"|"</span> {Expression <span class="Constant">","</span>}+ generators <span class="Constant">"]"</span> ;
+
+<span class="Keyword">syntax</span> Variant
+	= nAryConstructor: Name name <span class="Constant">"("</span> {TypeArg <span class="Constant">","</span>}* arguments  KeywordFormals keywordArguments <span class="Constant">")"</span> ;
+
+<span class="Keyword">syntax</span> FunctionDeclaration
+	= abstract: Tags tags Visibility visibility Signature signature <span class="Constant">";"</span> 
+	| <span class="Comment">@Foldable</span> <span class="Comment">@breakable{expression}</span> expression: Tags tags Visibility visibility Signature signature <span class="Constant">"="</span> Expression expression <span class="Constant">";"</span>
+	| <span class="Comment">@Foldable</span> <span class="Comment">@breakable{expression,conditions}</span> conditional: Tags tags Visibility visibility Signature signature <span class="Constant">"="</span> Expression expression <span class="Constant">"when"</span> {Expression <span class="Constant">","</span>}+ conditions <span class="Constant">";"</span>
+	| <span class="Comment">@Foldable</span> \default: Tags tags Visibility visibility Signature signature FunctionBody body ;
+
+<span class="Keyword">lexical</span> PreProtocolChars
+	= <span class="Constant">"|"</span> URLChars <span class="Constant">"\&lt;"</span> ;
+
+<span class="Keyword">lexical</span> NamedRegExp
+	= <span class="Constant">"\&lt;"</span> Name <span class="Constant">"\&gt;"</span> 
+	| [<span class="Constant">\\</span>] [<span class="Constant">/</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] 
+	| NamedBackslash 
+	| ![<span class="Constant">/</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\\</span>] ;
+
+<span class="Keyword">syntax</span> ProdModifier
+	= associativity: Assoc associativity 
+	| \bracket: <span class="Constant">"bracket"</span> 
+	| \tag: Tag tag;
+
+<span class="Keyword">syntax</span> Toplevel
+	= givenVisibility: Declaration declaration ;
+
+<span class="Keyword">lexical</span> PostStringChars
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> [<span class="Constant">\&gt;</span>] StringCharacter* [<span class="Constant">\"</span>] ;
+
+<span class="Keyword">lexical</span> HexIntegerLiteral
+	= [<span class="Constant">0</span>] [<span class="Constant">X</span> <span class="Constant">x</span>] [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">F</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">f</span>]+ !&gt;&gt; [<span class="Constant">0</span><span class="Keyword">-</span><span class="Constant">9</span> <span class="Constant">A</span><span class="Keyword">-</span><span class="Constant">Z</span> <span class="Constant">_</span> <span class="Constant">a</span><span class="Keyword">-</span><span class="Constant">z</span>] ;
+
+<span class="Keyword">syntax</span> TypeVar
+	= free: <span class="Constant">"&amp;"</span> Name name 
+	| bounded: <span class="Constant">"&amp;"</span> Name name <span class="Constant">"\&lt;:"</span> Type bound ;
+
+
+
+<span class="Keyword">syntax</span> BasicType
+	= \value: <span class="Constant">"value"</span> 
+	| \loc: <span class="Constant">"loc"</span> 
+	| \node: <span class="Constant">"node"</span> 
+	| \num: <span class="Constant">"num"</span> 
+	| \type: <span class="Constant">"type"</span> 
+	| \bag: <span class="Constant">"bag"</span> 
+	| \int: <span class="Constant">"int"</span>
+	| rational: <span class="Constant">"rat"</span> 
+	| relation: <span class="Constant">"rel"</span> 
+	| listRelation: <span class="Constant">"lrel"</span>
+	| \real: <span class="Constant">"real"</span> 
+	| \tuple: <span class="Constant">"tuple"</span> 
+	| string: <span class="Constant">"str"</span> 
+	| \bool: <span class="Constant">"bool"</span> 
+	| \void: <span class="Constant">"void"</span> 
+	| dateTime: <span class="Constant">"datetime"</span> 
+	| \set: <span class="Constant">"set"</span> 
+	| \map: <span class="Constant">"map"</span> 
+	| \list: <span class="Constant">"list"</span> 
+	;
+
+<span class="Keyword">lexical</span> Char
+	= <span class="Comment">@category=<span class="Constant">"Constant"</span></span> <span class="Constant">"\\"</span> [<span class="Constant">\ </span> <span class="Constant">\"</span> <span class="Constant">\'</span> <span class="Constant">\-</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\[</span> <span class="Constant">\\</span> <span class="Constant">\]</span> <span class="Constant">b</span> <span class="Constant">f</span> <span class="Constant">n</span> <span class="Constant">r</span> <span class="Constant">t</span>] 
+	| <span class="Comment">@category=<span class="Constant">"Constant"</span></span> ![<span class="Constant">\ </span> <span class="Constant">\"</span> <span class="Constant">\'</span> <span class="Constant">\-</span> <span class="Constant">\&lt;</span> <span class="Constant">\&gt;</span> <span class="Constant">\[</span> <span class="Constant">\\</span> <span class="Constant">\]</span>] 
+	| <span class="Comment">@category=<span class="Constant">"Constant"</span></span> UnicodeEscape 
+    ; 
+    
+<span class="Keyword">syntax</span> Prod
+	= reference: <span class="Constant">":"</span> Name referenced
+	| labeled: ProdModifier* modifiers Name name <span class="Constant">":"</span> Sym* syms 
+	| others: <span class="Constant">"..."</span> 
+	| unlabeled: ProdModifier* modifiers Sym* syms
+	| <span class="Comment">@Foldable</span> associativityGroup: Assoc associativity <span class="Constant">"("</span> Prod group <span class="Constant">")"</span> 
+	<span class="Comment">// | TODO add bracket rule for easy readability</span>
+	&gt; <span class="Keyword">left</span> \all   : Prod lhs <span class="Constant">"|"</span> Prod rhs 
+	&gt; <span class="Keyword">left</span> first : Prod lhs <span class="Constant">"\&gt;"</span> !&gt;&gt; <span class="Constant">"\&gt;"</span> Prod rhs
+	;
+
+<span class="Keyword">syntax</span> DateTimeLiteral
+	= <span class="Comment">/*prefer()*/</span> dateLiteral: JustDate date 
+	| <span class="Comment">/*prefer()*/</span> timeLiteral: JustTime time 
+	| <span class="Comment">/*prefer()*/</span> dateAndTimeLiteral: DateAndTime dateAndTime ;
+
+<span class="Keyword">lexical</span> PrePathChars
+	= URLChars <span class="Constant">"\&lt;"</span> ;
+
+<span class="Keyword">syntax</span> Mapping[&amp;T]
+	= \default: &amp;T!ifDefinedOtherwise from <span class="Constant">":"</span> &amp;T to 
+	;
+
+<span class="Keyword">lexical</span> MidPathChars
+	= <span class="Constant">"\&gt;"</span> URLChars <span class="Constant">"\&lt;"</span> ;
+
+<span class="Comment">/*
+  Note that Pattern must closely follow the definitions of Expression because eventually
+  these two non-terminals will be fused just before AST generation.
+*/</span>
+<span class="Keyword">syntax</span> Pattern
+	= \set                 : <span class="Constant">"{"</span> {Pattern <span class="Constant">","</span>}* elements0 <span class="Constant">"}"</span> 
+	| \list                : <span class="Constant">"["</span> {Pattern <span class="Constant">","</span>}* elements0 <span class="Constant">"]"</span> 
+	| qualifiedName       : QualifiedName qualifiedName 
+	| multiVariable       : QualifiedName qualifiedName <span class="Constant">"*"</span>
+	| splice              : <span class="Constant">"*"</span> Pattern argument
+	| splicePlus          : <span class="Constant">"+"</span> Pattern argument 
+	| negative            : <span class="Constant">"-"</span> Pattern argument
+	| literal             : Literal literal 
+	| \tuple               : <span class="Constant">"\&lt;"</span> {Pattern <span class="Constant">","</span>}+ elements <span class="Constant">"\&gt;"</span> 
+	| typedVariable       : Type type Name name 
+	| \map                 : <span class="Constant">"("</span> {Mapping[Pattern] <span class="Constant">","</span>}* mappings <span class="Constant">")"</span> 
+	| reifiedType         : <span class="Constant">"type"</span> <span class="Constant">"("</span> Pattern symbol <span class="Constant">","</span> Pattern definitions <span class="Constant">")"</span> 
+	| callOrTree          : Pattern expression <span class="Constant">"("</span> {Pattern <span class="Constant">","</span>}* arguments KeywordArguments[Pattern] keywordArguments <span class="Constant">")"</span> 
+	&gt; variableBecomes     : Name name <span class="Constant">":"</span> Pattern pattern
+	| asType              : <span class="Constant">"["</span> Type type <span class="Constant">"]"</span> Pattern argument 
+	| descendant          : <span class="Constant">"/"</span> Pattern pattern 
+	| anti                : <span class="Constant">"!"</span> Pattern pattern 
+	| typedVariableBecomes: Type type Name name <span class="Constant">":"</span> Pattern pattern 
+    ;
+    
+<span class="Keyword">syntax</span> Tag
+	= <span class="Comment">@Folded</span> <span class="Comment">@category=<span class="Constant">"Comment"</span></span> \default   : <span class="Constant">"@"</span> Name name TagString contents 
+	| <span class="Comment">@Folded</span> <span class="Comment">@category=<span class="Constant">"Comment"</span></span> empty     : <span class="Constant">"@"</span> Name name 
+	| <span class="Comment">@Folded</span> <span class="Comment">@category=<span class="Constant">"Comment"</span></span> expression: <span class="Constant">"@"</span> Name name <span class="Constant">"="</span> Expression expression ;
+
+<span class="Keyword">syntax</span> ModuleActuals
+	= \default: <span class="Constant">"["</span> {Type <span class="Constant">","</span>}+ types <span class="Constant">"]"</span> ;</code></pre>
