@@ -5,5 +5,5 @@ published: true
 ---
 
 * [Rascal Meta Programming Language](http://www.rascalmpl.org)
-* [IMPULSE](http://www.usethesource.io/impulse)
-
+* [Impulse](http://www.usethesource.io/projects/impulse)
+* [Capsule](http://www.usethesource.io/projects/capsule)
