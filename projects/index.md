@@ -4,6 +4,7 @@ title: Projects
 published: true
 ---
 
-* [Rascal Meta Programming Language](http://www.rascalmpl.org)
-* [Impulse](http://www.usethesource.io/projects/impulse)
-* [Capsule](http://www.usethesource.io/projects/capsule)
+* [Rascal](http://www.usethesource.io/projects/rascal) - Meta programming language
+* [Impulse](http://www.usethesource.io/projects/impulse) - Eclipse rapid IDE construction API
+* [Capsule](http://www.usethesource.io/projects/capsule) - Hash-trie collections library
+* [Iguana](http://www.usethesource.io/projects/iguana) - Data-dependent general context-free parsing framework
