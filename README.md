@@ -4,4 +4,5 @@ This repository contains the website for [Use The Source](http://www.usethesourc
 
 * managed using jekyll 
 * hosted on github pages
+* check out the projects at <http://www.usethesource.io/projects>
 
