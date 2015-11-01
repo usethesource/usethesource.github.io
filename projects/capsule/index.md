@@ -6,7 +6,7 @@ published: true
 
 Capsule is a fast and lean implementation of a family of hash-trie-based collections (sets, maps).
 
-* *website*: [UseTheSource - Capsule](/projects/capsule)
+* *website*: <http://usethesource.io/projects/capsule>
 * *code*: <https://github.com/usethesource/capsule>
 * *issues*: <https://github.com/usethesource/capsule/issues>
 * *papers*:
