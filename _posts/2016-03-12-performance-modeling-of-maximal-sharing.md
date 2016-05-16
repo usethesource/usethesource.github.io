@@ -2,7 +2,7 @@
 published: true
 title: Performance Modeling of Maximal Sharing - Experience Report
 author: Michael Steindorfer
-authorlink: "http://
+authorlink: "https://www.cwi.nl/people/2551"
 layout: post
 ---
 
