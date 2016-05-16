@@ -31,22 +31,22 @@ Check out these two related articles on the empirical relation between the CC an
 ```
 
 Measuring the internal quality of source code is one of the traditional 
-    goals of making software development into an engineering discipline. 
-    Cyclomatic Complexity (CC) is an often used source code quality metric, next 
-    to Source Lines of Code (SLOC). However, the use of the CC metric is 
-    challenged by the repeated claim that CC is redundant with respect to SLOC 
-    due to strong linear correlation.
+goals of making software development into an engineering discipline. 
+Cyclomatic Complexity (CC) is an often used source code quality metric, next 
+to Source Lines of Code (SLOC). However, the use of the CC metric is 
+challenged by the repeated claim that CC is redundant with respect to SLOC 
+due to strong linear correlation.
 
 
-    We conducted an extensive literature study of the CC/SLOC correlation results. 
-    Next, we tested correlation on large Java (17.6 M methods) and C (6.3 M 
-    functions) corpora. Our results show that linear correlation between SLOC and CC 
-    is only moderate as caused by increasingly high variance. We further observe 
-    that aggregating CC and SLOC as well as performing a power transform improves 
-    the correlation.
+We conducted an extensive literature study of the CC/SLOC correlation results. 
+Next, we tested correlation on large Java (17.6 M methods) and C (6.3 M 
+functions) corpora. Our results show that linear correlation between SLOC and CC 
+is only moderate as caused by increasingly high variance. We further observe 
+that aggregating CC and SLOC as well as performing a power transform improves 
+the correlation.
 
-    Our conclusion is that the observed linear correlation between CC and SLOC 
-    of Java methods or C functions is not strong enough to conclude that CC is 
-    redundant with SLOC. This conclusion contradicts earlier claims from 
-    literature, but concurs with the widely accepted practice of measuring of CC 
-    next to SLOC.
+Our conclusion is that the observed linear correlation between CC and SLOC 
+of Java methods or C functions is not strong enough to conclude that CC is 
+redundant with SLOC. This conclusion contradicts earlier claims from 
+literature, but concurs with the widely accepted practice of measuring of CC 
+next to SLOC.
