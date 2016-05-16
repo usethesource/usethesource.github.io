@@ -6,6 +6,8 @@ authorlink: "http://www.cs.ecu.edu/hillsma"
 layout: post
 ---
 
+Helping PHP developers using Rascal-based code analysis.
+
 ```
 @inproceedings{hillsicpc2016,
   author = "Mark Hills",
