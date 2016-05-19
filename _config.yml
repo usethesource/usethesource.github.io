@@ -8,13 +8,18 @@ lsi: false
 
 highlighter: rouge
 
-name: Rascal - Meta Programming Language
-title: Rascal - Meta Programming Language
+comments :
+  provider : disqus
+  disqus :
+    short_name : usethesource
 
-production_url: http://rascal.landman.nl.eu.org/
+name: Use The Source
+title: Use The Source Open Meta Software Community
+
+production_url: http://www.usethesource.io
 
 exclude: ["README.md"]
 
-blogname: RascalMPL Blog 
-description: Rascal's blog.
-url: http://www.rascal-mpl.org/ 
+blogname: Use The Source Blog 
+description: Blog for Use The Source Open Meta Software Community
+url: http://www.usethesource.io
