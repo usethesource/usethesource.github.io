@@ -4,7 +4,7 @@ layout: default
 <h2>{{ page.title }}</h2>
 <p class="meta">
    {{ page.date | date_to_string }}
-   {% if page.author && page.authorlink %}
+   {% if page.author and page.authorlink %}
       - <a href="{{page.authorlink}}">{{ page.author }}</a>
    {% endif %}
 </p>
