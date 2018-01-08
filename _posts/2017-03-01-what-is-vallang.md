@@ -1,7 +1,7 @@
 ---
-published: false
-title: What is ValLang?
-author: Jurgen Vinju
+published: true
+title: "What is ValLang?"
+author: "Jurgen J. Vinju"
 authorlink: "http://jurgen.vinju.org"
 layout: post
 ---
