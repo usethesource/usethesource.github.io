@@ -6,7 +6,7 @@ authorlink: "http://jurgen.vinju.org"
 layout: post
 ---
 
-**Vallang** is a highly integrated and mostly-closed collection of mutually recursive fundamental data-types on the Java Virtual Machine:
+**Vallang** (<https://github.com/usethesource/vallang>) is a highly integrated and mostly-closed collection of mutually recursive fundamental data-types on the Java Virtual Machine:
 
 * locations represented by URIs: `|java+class://java/lang/String|` and `|file:///tmp/HelloWorld.java|`
 * integers of arbitrary size: `1,2,3, 134812345123841234`
