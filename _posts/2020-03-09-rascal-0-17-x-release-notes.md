@@ -1,8 +1,8 @@
 ---
 layout: post 
-published: true
-author: "Jurgen J. Vinju"
-authorlink: "http://homepages.cwi.nl/~jurgenv"
+published: false
+author: "Jurgen J. Vinju and Paul Klint"
+authorlink: "http://www.rascal-mpl.org"
 title: "Rascal 0.17.x release notes"
 ---
 
