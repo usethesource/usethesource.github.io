@@ -19,7 +19,7 @@ The current release 0.17.x is a step towards bootstrapping the Rascal compiler a
 The static checker:
 
 * checks all features of Rascal
-* is written in Rascal using the TypePal framework, see https://github.com/usethesource/typepal
+* is written in Rascal using the [TypePal framework](https://github.com/usethesource/typepal)
 * is activated on "project clean" and "file save"
 * runs for now in the Rascal interpreter and may be slow on bigger projects (this is transitional, so bear with us)
 * enables editor features such as hover-help and jump-to-definition in Eclipse, based on the state of the file after the last "save"
