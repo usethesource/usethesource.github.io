@@ -1,6 +1,6 @@
 ---
 layout: post 
-published: false
+published: true
 author: "Jurgen J. Vinju and Paul Klint"
 authorlink: "http://www.rascal-mpl.org"
 title: "Rascal 0.17.x release notes"
@@ -8,9 +8,13 @@ title: "Rascal 0.17.x release notes"
 
 In this post we report on the Rascal release 0.17.x, which includes all changes since the 0.16.x releases. 
 
+---
+
+## Release 0.17.0 - March 16th, 2020
+
 The 0.15.x releases served as daily pre-releases for 0.17.0, while 0.16.x was a stable release which included all patches since 0.10.0. The releases between 0.10.0 and 0.16.0 have mainly been concerned with bootstrapping and minor bugfixes.
 
-The current release 0.17.x is a step towards bootstrapping the Rascal compiler and making the new static checker (type checker) available: 
+The current release 0.17.x is a step towards bootstrapping the Rascal compiler and making the new static checker (type checker) available. 
 
 The static checker:
 
