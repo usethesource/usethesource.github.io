@@ -10,7 +10,11 @@ These are recipes for how things are organized in the UseTheSource community.
 
 UseTheSource is organized as a flat hierarchy with of roles with Board Members on top, Project Owners in the middle and Contributors below. The Board Members take responsibility for the integration and presentation of the entire community. The Project Owners have the responsibility for a specific project (one project may have several owners), and the Contributors are responsible for each contribution made. Users are people who download and apply the projects and possible submit pull requests or issues. Specific rights and responsibilities for each role are mentioned below.
 
-The current board members are Paul Klint, Jurgen Vinju and Tijs van der Storm.
+The current board members are:
+   * Paul Klint (Swat.engineering BV), 
+   * Jurgen Vinju (CWI), 
+   * Tijs van der Storm (CWI)
+   * Davy Landman (Swat.engineering BV).
 
 ## Project Incubation Process
 
