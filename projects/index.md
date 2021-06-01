@@ -8,4 +8,4 @@ published: true
 * [Impulse](/projects/impulse) - Eclipse rapid IDE construction API ![status](https://github.com/usethesource/impulse/actions/workflows/build.yaml/badge.svg)
 * [Capsule](/projects/capsule) - Hash-trie collections library ![status](https://github.com/usethesource/capsule/actions/workflows/build.yaml/badge.svg)
 * [Iguana](/projects/iguana) - Data-dependent general context-free parsing framework
-* [ValLang](/projects/vallang) - Typed Immutable Data on the JVM ![status](https://github.com/usethesource/capsule/actions/workflows/build.yaml/badge.svg)
+* [ValLang](/projects/vallang) - Typed Immutable Data on the JVM ![status](https://github.com/usethesource/vallang/actions/workflows/build.yaml/badge.svg)
