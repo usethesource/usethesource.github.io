@@ -41,4 +41,3 @@ Other notable changes:
 * resolved many issues (thanks all for reporting!)
 * various performance improvements
 
-
