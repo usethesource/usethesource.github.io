@@ -19,14 +19,23 @@ We report on intermediate releases 0.18.x, 0.19.x, 0.20.x, 0.21.x and 0.22.x as 
 **Generating Eclipse and VScode Plugins**
 
 This port to Java 11 implies that the current [stable release of the Rascal Eclipse plugin](https://update.rascal-mpl.org/stable/) works again with the latest releases of Eclipse from 2021 and 2022. In the meantime
-releases of the [rascal-language-server extension](https://marketplace.visualstudio.com/items?itemName=usethesource.rascalmpl) for VScode have been developed. This has had some impact on the modules in the standard library concerning interaction with DSLs and interactions with the IDE (`util::IDEServices`, `util::Monitor` and `util::IDE`. The old API still works and it is backward compatible in Eclipse. However, if you want to port your DSL to VScode, there are minor changes in how to wrap your extension and new interaction possibilities with the IDE which are not present in Eclipse.
+releases of the [rascal-language-server extension](https://marketplace.visualstudio.com/items?itemName=usethesource.rascalmpl) for VScode have been developed. 
+
+Porting Rascal's IDE generator features to VScode has had minor impact on the modules in the standard library concerning interaction with DSLs and interactions with the IDE (`util::IDEServices`, `util::Monitor` and `util::IDE`). The old API still works and it is backward compatible in Eclipse. However, if you want to port your DSL to VScode, there are minor changes in how to wrap your extension and new interaction possibilities with the IDE which are not present in Eclipse. Not all new IDE API is available in Eclipse yet either. Both directions of consolidation (VScode <-> Eclipse) are interesting directions of future work.
 
 This release works best with Java 11, but not with higher versions. There are still illegal uses of reflective access which need to be resolved before Rascal runs correctly on Java 13 and higher.
 
 **Hosting Releases and Continuous Integration**
 
-* http://releases.usethesource.io is the current place for all Rascal related releases. The Eclipse stable update site is still at https://update.rascal-mpl.org/stable/. http://nexus.usethesource.io/ is still functional but officially deprecated. If you want to test release candidates, then the URL is https://update.rascal-mpl.org/release, but we must warn you that regressing to an earlier version is not supported, so you'd have to reinstall Eclipse from scratch for that.
+* http://releases.usethesource.io is the current place for all Rascal related releases. 
+* The Eclipse stable update site is still at https://update.rascal-mpl.org/stable/. 
+* http://nexus.usethesource.io/ is still functional but officially deprecated. 
+* If you want to test release candidates, then the URL is https://update.rascal-mpl.org/release, but we must warn you that regressing to an earlier version is not supported, so you'd have to reinstall Eclipse from scratch for that.
 * We migrated our continuous integration scripts to GitHub actions. Thanks to Jenkins for the many years of service and the support from CWI staff and management to keep our servers funded, safe and sound.
+
+**Sponsoring**
+
+It has become possible to [sponsor](https://github.com/sponsors/usethesource) the Rascal project. If you are considering, please do not hesitate to contact us.
 
 **Other changes**
 
