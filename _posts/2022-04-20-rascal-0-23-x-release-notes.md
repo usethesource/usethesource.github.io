@@ -14,7 +14,7 @@ In this post we report on the Rascal release 0.23.x, which includes all changes 
 
 The 0.23.0 release marks the end of the migration of all Rascal supporting libraries (vallang, capsule) and the Rascal interpreter to **Java 11**. The contributors include Paul Klint, Jouke Stoel, Mauricio Verano Merino, Tijs van der Storm, Rodin Aarssen, Arnold Lankamp, Davy Landman, Pieter Olivier and Jurgen Vinju.
 
-We report on intermediate releases 0.18.x, 0.19.x, 0.20.x, 0.21.x and 0.22.x as well as these had not lead to a release of the Rascal Eclipse plugins or a stable release of the commandline version. 
+We report on intermediate releases 0.18.x, 0.19.x, 0.20.x, 0.21.x and 0.22.x as well, as these had not lead to a release of the Rascal Eclipse plugins or a stable release of the commandline version. 
 
 **Generating Eclipse and VScode Plugins**
 
