@@ -25,7 +25,7 @@ This release works best with Java 11, but not with higher versions. There are st
 
 **Hosting Releases and Continuous Integration**
 
-* http://releases.usethesource.io is the current place for all Rascal related releases. The Eclipse update site is still at https://update.rascal-mpl.org/stable/
+* http://releases.usethesource.io is the current place for all Rascal related releases. The Eclipse stable update site is still at https://update.rascal-mpl.org/stable/. http://nexus.usethesource.io/ is still functional but deprecated. If you want to test release candidates, then the URL is https://update.rascal-mpl.org/release, but we must warn you that regressing to an earlier version is not supported, so you'd have to reinstall Eclipse from scratch for that.
 * We migrated our continuous integration scripts to GitHub actions. Thanks to Jenkins for the many years of service and the support from CWI staff and management to keep our servers funded, safe and sound.
 
 **Other changes**
