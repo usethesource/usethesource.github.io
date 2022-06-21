@@ -11,4 +11,4 @@ published: true
 * [Capsule](/projects/capsule) - Hash-trie collections library ![status](https://github.com/usethesource/capsule/actions/workflows/build.yaml/badge.svg)
 * [ValLang](/projects/vallang) - Typed Immutable Data on the JVM ![status](https://github.com/usethesource/vallang/actions/workflows/build.yaml/badge.svg)
 * [Salix](/projects/salix) - Elm-style GUIs in Rascal ![status](https://github.com/usethesource/salix/actions/workflows/build.yaml/badge.svg)
-* [ClaiR](/projects/clair) - Eclipse CDT-based front-end for C and C++ 
+* [ClaiR](/projects/clair) - Eclipse CDT-based front-end for C and C++  ![status](https://github.com/usethesource/clair/actions/workflows/build.yaml/badge.svg)
