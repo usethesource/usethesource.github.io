@@ -15,7 +15,7 @@ published: true
 
 ### Generic utilities:
 
-* ![status](https://github.com/usethesource/salix/actions/workflows/build.yaml/badge.svg) [Salix](/projects/salix) - Elm-style GUIs in Rascal, for interactive software and data vizualization
+* ![status](https://github.com/usethesource/salix-core/actions/workflows/build.yaml/badge.svg) [Salix](/projects/salix) - Elm-style GUIs in Rascal, for interactive software and data vizualization
 
 ### Language support:
 
