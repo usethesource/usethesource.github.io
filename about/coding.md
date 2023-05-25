@@ -21,7 +21,8 @@ These are guidelines for code style and quality that we follow at UseTheSource.
 
 ## Rascal
 
-* all public functions have @doc tags in Rascal tutor format.
+* all public functions have @synopsis tags in Rascal tutor format.
+* most public functions have @description and @examples tags in Rascal tutor format.
 * tools for languages reside in `lang/<language name>/<sub?>/<tool name>.rsc`
 * generic algorithms for analysis reside in `analysis/<algorithm group>/<algorithm>.rsc`
 * generic utilities (i.e. for communication) reside in `utils/<utility>.rsc`
