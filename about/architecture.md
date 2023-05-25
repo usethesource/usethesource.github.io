@@ -26,7 +26,7 @@ The decisions and the fact that they are shared among the projects is motivated 
 * All projects have `main` as the main development branch;
 * All projects are hosted on github in the usethesource organization;
 * All features are developed on a branch different from `main` (i.e. a pull request btanch);
-* A new `master` is pushed only if the unit tests have been run successfully;
+* A new `main` is pushed only if the unit tests have been run successfully;
 * Github issue id's are used in commit messages `fixes #23`.
 
 ## Issue Trackers
