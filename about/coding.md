@@ -35,5 +35,14 @@ These are guidelines for code style and quality that we follow at UseTheSource.
   * meaningful reserved names, such as `if` for the constructor name are not renamed to avoid the collision but escaped like so: `\if`. This holds for all names.
   * Abstract syntax trees use the typical names as declared in `analysis::m3::AST`: Declaration, Expression, Statement, Type, Modifier.
   * the source location of the original information is always stored in the field `loc src=|unknown:///|`
+* the default value for all fields of type `loc` is typically `|unknown://` unless well motivated.
+* test functions are located inside the modules of the functionality they test. This is to improve cohesion and lower coupling and to enrich the online documentation with descriptive specifications.
+* functions used only for testing purposes are always `private`
+* small functions only used by one function are declared inside of the caller's scope as much as possible.
+* local helper functions are otherwise made `private`
+* `switch` is avoided when pattern based dispatch is also possible, for future extensibility's sake.
+* use nullary ADT constructors as "enums", never strings.
+* use `loc` source locations as references, qualified names or general identifiers; to avoid strings, captured variables or other fancy yardages of first class functions.
+* use relations over maps where possible, for future generalizability where suddenly the mapping is not many-to-one anymore. The underlying datastructures for relations gracefully expand. 
     
     
