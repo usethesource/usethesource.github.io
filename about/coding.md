@@ -46,5 +46,6 @@ These are guidelines for code style and quality that we follow at UseTheSource.
 * use relations over maps where possible, for future generalizability where suddenly the mapping is not many-to-one anymore. The underlying datastructures for relations gracefully expand.
 * Staging before parametrization: introduce an intermediate datatype or relation instead of adding (higher order) parameters to introduce algorithmic variability.
 * Positional fields of ADT constructors, when they have a `src` origin field are always ordered by their original position from left you right. The same holds for lists of ADT constructors; they remain ordered by their `src` field, unless the elements do not originate from the same source file anymore.
+* Collect and reason about algorithmic answers using relational calculus: union, intersecting, composition, comprehensions, recursion, solve statement; over use the of higher order first class functions and closures. Immutable relations are easier to debug, much easier to extend,  and have fewer bugs in general due to equational reasoning that you loose when using closures over mutable state.
     
     
