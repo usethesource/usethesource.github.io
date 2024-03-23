@@ -52,7 +52,7 @@ These are guidelines for code style and quality that we follow at UseTheSource.
   * we collect messages in `list[Message]` sorted by file offset and grouped by source file.
   * functions rather return `void` than return an error code. Instead they throw an exception value when an internal error is detected.
   * exception values are typically a constructor of `RuntimeException` from the `Exception` module. Either use an existing constructor or add your own.
-  * Progress is reported through the `util::Monitor` API. This integrates with all programming environments.
-  * Interactive UI is built with HTML and JavaScript, using the built-in app server off the REPL on the terminal, the `showInteractiveContent` app server of the IDE or `util::WebServer`. You can use `lang::html` and `lang::json` to streamline this. The Salix library is also recommended. 
+* Progress is reported through the `util::Monitor` API. This integrates with all programming environments.
+* Interactive UI is built with HTML and JavaScript, using the built-in app server off the REPL on the terminal, the `showInteractiveContent` app server of the IDE or `util::WebServer`. You can use `lang::html` and `lang::json` to streamline this. The Salix library is also recommended. 
     
     
