@@ -47,5 +47,12 @@ These are guidelines for code style and quality that we follow at UseTheSource.
 * Staging before parametrization: introduce an intermediate datatype or relation instead of adding (higher order) parameters to introduce algorithmic variability.
 * Positional fields of ADT constructors, when they have a `src` origin field are always ordered by their original position from left you right. The same holds for lists of ADT constructors; they remain ordered by their `src` field, unless the elements do not originate from the same source file anymore.
 * Collect and reason about algorithmic answers using relational calculus: union, intersecting, composition, comprehensions, recursion, solve statement; over use the of higher order first class functions and closures. Immutable relations are easier to debug, much easier to extend,  and have fewer bugs in general due to equational reasoning that you loose when using closures over mutable state.
+* With respect to error handling:
+  * the `Message` ADT is for user expected errors detected in an object language: type checking, linting, etc. which can be reported in an IDE.
+  * we collect messages in `list[Message]` sorted by file offset and grouped by source file.
+  * functions rather return `void` than return an error code. Instead they throw an exception value when an internal error is detected.
+  * exception values are typically a constructor of `RuntimeException` from the `Exception` module. Either use an existing constructor or add your own.
+  * Progress is reported through the `util::Monitor` API. This integrates with all programming environments.
+  * Interactive UI is built with HTML and JavaScript, using the built-in app server off the REPL on the terminal, the `showInteractiveContent` app server of the IDE or `util::WebServer`. You can use `lang::html` and `lang::json` to streamline this. The Salix library is also recommended. 
     
     
