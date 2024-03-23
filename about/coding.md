@@ -42,7 +42,8 @@ These are guidelines for code style and quality that we follow at UseTheSource.
 * local helper functions are otherwise made `private`
 * `switch` is avoided when pattern based dispatch is also possible, for future extensibility's sake.
 * use nullary ADT constructors as "enums", never strings.
-* use `loc` source locations as references, qualified names or general identifiers; to avoid strings, captured variables or other fancy yardages of first class functions.
-* use relations over maps where possible, for future generalizability where suddenly the mapping is not many-to-one anymore. The underlying datastructures for relations gracefully expand. 
+* use `loc` source locations as references, qualified names or general identifiers; to avoid strings, captured variables or other fancy usages of first class functions.
+* use relations over maps where possible, for future generalizability where suddenly the mapping is not many-to-one anymore. The underlying datastructures for relations gracefully expand.
+* Staging before parametrization: introduce an intermediate datatype or relation instead of adding (higher order) parameters to introduce algorithmic variability. 
     
     
