@@ -7,6 +7,7 @@ published: true
 Rascal is a general purpose meta programming language, framework, IDE and libraries. 
 
 * *website*: <http://www.rascal-mpl.org>
+* *documentation*: <https://www.rascal-mpl.org/docs/GettingStarted/>
 * *code*: 
    * <https://github.com/usethesource/vallang>
    * <https://github.com/usethesource/capsule>
