@@ -9,8 +9,8 @@ Rascal is a general purpose meta programming language, framework, IDE and librar
 * *website*: <http://www.rascal-mpl.org>
 * *code*: 
    * <https://github.com/usethesource/vallang>
-   * <https://github.com/usethesource/rascal>, 
-   * <https://github.com/usethesource/rascal-eclipse>, 
+   * <https://github.com/usethesource/capsule>
+   * <https://github.com/usethesource/rascal>,  
    * <https://github.com/usethesource/rascal-language-servers>,
    * <https://github.com/usethesource/rascal-maven-plugin>
 
