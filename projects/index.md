@@ -24,8 +24,7 @@ published: true
 
 ### Archived projects
 
-:::info
 The following projects have been discontinued:
-* ![status](https://github.com/usethesource/rascal-eclipse/actions/workflows/build.yaml/badge.svg) [Rascal Eclipse](https://github.com/usethesource/rascal-eclipse) - Eclipse based IDE and IDE generator for Rascal  (succeeded by rascal-language-servers)
-* ![status](https://github.com/usethesource/impulse/actions/workflows/build.yaml/badge.svg) [Impulse](/projects/impulse) - Eclipse rapid IDE construction API (succeeded by rascal-language-servers)
+* [Rascal Eclipse](https://github.com/usethesource/rascal-eclipse) - Eclipse based IDE and IDE generator for Rascal  (succeeded by rascal-language-servers)
+* [Impulse](/projects/impulse) - Eclipse rapid IDE construction API (succeeded by rascal-language-servers)
 :::
