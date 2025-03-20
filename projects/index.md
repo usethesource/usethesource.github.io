@@ -14,15 +14,18 @@ published: true
 ### Generic utilities:
 
 * ![status](https://github.com/usethesource/salix-core/actions/workflows/build.yaml/badge.svg) [Salix](/projects/salix) - Elm-style GUIs in Rascal, for interactive software and data vizualization
+* ![status](https://github.com/usethesource/rascal-lucene/actions/workflows/build.yaml/badge.svg) [Rascal-lucene](/projects/rascal-lucene) - Bidirectional integration of Rascal with Lucene's text analysis and search facilities
 
 ### Language support:
 
+* ![status](https://github.com/usethesource/java-air/actions/workflows/build.yaml/badge.svg) [Java-air](/projects/java-air) - Eclipse JDT front-end for Java and JVM bytecode analysis
 * ![status](https://github.com/usethesource/clair/actions/workflows/build.yaml/badge.svg) [ClaiR](/projects/clair) - Eclipse CDT-based front-end for C and C++
 * ![status](https://github.com/usethesource/flybytes/actions/workflows/build.yaml/badge.svg) [Flybytes](/projects/flybytes) - Intermediate language for to-JVM bytecode compilation/decompilation
 
 ### Archived projects
 
-The following projects are not actively maintained anymore, but may still provide inspiration or code examples:
-
-* [Rascal Eclipse](https://github.com/usethesource/rascal-eclipse) - Eclipse based IDE and IDE generator for Rascal
-* [Impulse](/projects/impulse) - Eclipse rapid IDE construction API
+:::info
+The following projects have been discontinued:
+* ![status](https://github.com/usethesource/rascal-eclipse/actions/workflows/build.yaml/badge.svg) [Rascal Eclipse](https://github.com/usethesource/rascal-eclipse) - Eclipse based IDE and IDE generator for Rascal  (succeeded by rascal-language-servers)
+* ![status](https://github.com/usethesource/impulse/actions/workflows/build.yaml/badge.svg) [Impulse](/projects/impulse) - Eclipse rapid IDE construction API (succeeded by rascal-language-servers)
+:::
