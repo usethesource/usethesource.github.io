@@ -9,8 +9,8 @@ The core element of this collection is the [Rascal metaprogramming language](htt
 
 ### Contributors
 
-UseTheSource is an initiative from [Centrum Wiskunde & Informatica (CWI)](http://www.cwi.nl/), [SWAT group](https://www.cwi.nl/research/groups/software-analysis-and-transformation), in Amsterdam (The Netherlands). The code and other artifacts on UseTheSource is contributed by different people from different institutes, such as Universiteit van Amsterdam, TU Eindhoven, NFI, East Carolina University, University of Bergen.
-Find out who they are [here on github](https://github.com/orgs/usethesource/people).
+UseTheSource is an initiative from [Centrum Wiskunde & Informatica (CWI)](http://www.cwi.nl/), [SWAT group](https://www.cwi.nl/research/groups/software-analysis-and-transformation), in Amsterdam (The Netherlands). The code and other artifacts on UseTheSource is contributed by different people from different companies institutes, such as Universiteit van Amsterdam, TU Eindhoven, NFI, East Carolina University, University of Bergen.
+[SWAT.engineering BV](https://www.swat.engineering) is the largest commercial sponsor and contributor. They offer commercial products and services were our components are a fundamental infrastructure. Find out who all contributors are [here on github](https://github.com/orgs/usethesource/people).
 
 ### Documents
 
