@@ -18,5 +18,6 @@ UseTheSource is an initiative from [Centrum Wiskunde & Informatica (CWI)](http:/
 * [Open Source Licenses](licenses.html)
 * [Architecture Guidelines](architecture.html)
 * [Coding Rules](coding.html)
+* [AI Rules](ai.html)
 * [Community Processes](processes.html)
 * [Community Values](values.html)
