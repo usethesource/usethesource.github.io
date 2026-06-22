@@ -9,7 +9,7 @@ we explain some of the consequences here for our contributors. Two different asp
 1. AI applied to UseTheSource source code itself
 2. AI applications of {sofware,natural} language processing
 
-#### AI applied to UseTheSource source code itself
+#### AI applied to UseTheSource source code itself: no
 
 When AI is used to _generate_ or _transform_ source code of UseTheSource projects be **aware**
 that you might easily be failing compliance with the [Contributor License Agreement](https://github.com/usethesource/usethesource.github.io/blob/master/about/index.md#:~:text=Contributor%20License%20Agreement) that you signed:
@@ -23,7 +23,7 @@ Conclusion: you currently **can not use an LLM** to literally generate or transf
 The consequences of failing this rule could be disastrous for UseTheSource and Rascal. 
 So please do keep in line. Your code, your responsibility.
 
-#### AI applications of {software,natural} language processing
+#### AI applications of {software,natural} language processing: yes, with caution.
 
 As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's in UseTheSource projects have common issues. At least you as a UseTheSource contributor must:
 1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
