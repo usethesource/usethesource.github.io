@@ -20,9 +20,6 @@ that you might easily be failing compliance with the [Contributor License Agreem
 "To the best of my knowledge" in this case means that you know that you don't know if the AI you used is violating any rights.
 Conclusion: you currently **can not use an LLM** to literally generate or transform code for our projects.
 
-The consequences of failing this rule could be disastrous for UseTheSource and Rascal. 
-So please do keep in line. Your code, your responsibility.
-
 #### AI applications of {software,natural} language processing: yes, with caution.
 
 As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's in UseTheSource projects have common issues. At least you as a UseTheSource contributor must:
