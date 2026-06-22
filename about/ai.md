@@ -26,9 +26,7 @@ so please do keep in line. Your code, your responsibility.
 
 #### AI applications of {sofware,natural} language processing
 
-As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's to replace or complement the language processors, have common issues:
-
-A UseTheSource contributor must:
+As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's to replace or complement the language processors have common issues. I.o.w. a UseTheSource contributor must:
 1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
 2. Manage and communicate the **environmental impact** of the training and usage of LLMs. And also communicte clearly to users what this impact was/is.
 3. Understand and manage the level of **expertise** in the target community for their project. Is the LLM helping with complex tasks or is it hiding essential complexity?
