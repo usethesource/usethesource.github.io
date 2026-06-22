@@ -1,5 +1,10 @@
 ---
 title: AI rules
+keywords:
+  - AI
+  - LLM
+  - license
+  - copyright
 ---
 
 The application of AI -in particular Large Language Models (LLMs)- is interesting for 
