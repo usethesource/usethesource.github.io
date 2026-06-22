@@ -26,8 +26,8 @@ So please do keep in line. Your code, your responsibility.
 #### AI applications of {software,natural} language processing: yes, with caution.
 
 As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's in UseTheSource projects have common issues. At least you as a UseTheSource contributor must:
-0. If code **generation** or **transformation** is the topic, see above for issues with licensing and other rights. Be very careful.
-1. If **publication** under real person author names, pseudonyms, or avatars, of AI generated language is a feature, then see above for issues with licensing and other rights. Be very careful. This includes:
+0. If code **generation** or **transformation** is the topic, see [above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. Be very careful.
+1. If **publication** under real person author names, pseudonyms, or avatars, of AI generated language is a feature, then [see above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. Be very careful. Publication types to think about include:
     * scientific pre-prints, conference proceedings and journals;
     * blogs and vlogs
     * natural language and code in messages in issue trackers, or pull requests;
