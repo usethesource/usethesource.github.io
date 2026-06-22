@@ -16,7 +16,7 @@ that you might easily be failing compliance with the [Contributor License Agreem
 
 "To the best of my knowledge" is this case means that you know that you don't know if the AI you used is violating any rights.
 
-TL;DR you currently **can not use an LLM** to generate or transform code for our projects. 
+Conclusion: you currently **can not use an LLM** to generate or transform code for our projects!
 
 To work around this, you could explore the design space using an LLM/chatbot/AI, and then 
 write your production ready code from scratch. Learn from the AI, but **don't replace your work by the AI-generated code**.
