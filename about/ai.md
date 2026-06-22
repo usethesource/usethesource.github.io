@@ -26,3 +26,12 @@ so please do keep in line. Your code, your responsibility.
 
 #### AI applications for the UseTheSource domain
 
+As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is ample opportunity to combine the two and create a flywheel effect. All kinds of experiments regarding the use of LLM's to replace or complement the language processors we have are welcome.
+
+Be aware of the usage licenses of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to think about.
+
+Advice:
+* never directly link an LLM into a UseTheSource project. Always let the users download or call them.
+* never release pre-trained LLM's with a UseTheSource jar.
+* always give the user agency over the choice of LLM to use for each task (download and install, or webservice connectivity)
+
