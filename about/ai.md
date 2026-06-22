@@ -26,6 +26,13 @@ So please do keep in line. Your code, your responsibility.
 #### AI applications of {software,natural} language processing: yes, with caution.
 
 As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's in UseTheSource projects have common issues. At least you as a UseTheSource contributor must:
+0. If code **generation** or **transformation** is the topic, see above for issues with licensing and other rights. Be very careful.
+1. If **publication** under real person author names, pseudonyms, or avatars, of AI generated language is a feature, then see above for issues with licensing and other rights. Be very careful. This includes:
+    * scientific pre-prints, conference proceedings and journals;
+    * blogs and vlogs
+    * natural language and code in messages in issue trackers, or pull requests;
+    * answers on stackoverflow.com, discussion sites and other Q/A media;
+    * books and chapters of books
 1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
 2. Manage and communicate the **environmental impact** of the training and usage of LLMs. And also communicte clearly to users what this impact was/is.
 3. Understand and manage the level of **expertise** in the target community for their project. Is the LLM helping with complex tasks or is it hiding essential complexity?
