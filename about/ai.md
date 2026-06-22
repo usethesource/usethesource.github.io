@@ -30,8 +30,9 @@ As LLM's are (natural) language processors and UseTheSource is all about softwar
 
 A UseTheSource contributor must:
 1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
-2. Manage and communicate the environmental impact of the training and usage of LLMs. And also communicte clearly to users what this impact was/is.
-3. Give the user agency over the choice of LLM to use for each task (download and install, or webservice connectivity). Possibly also the users of our users.
+2. Manage and communicate the **environmental impact** of the training and usage of LLMs. And also communicte clearly to users what this impact was/is.
+3. Understand and manage the level of **expertise** in the target community for their project. Is the LLM helping with complex tasks or is it hiding essential complexity?
+4. Give the user agency over the choice of LLM to use for each task (download and install, or webservice connectivity). Possibly also the users of our users.
    * this means never linking and LLM into a jar, or downloading it just-in-time under-the-hood.
    * this also means users have to provide their own credentials to AI behind web services
 
