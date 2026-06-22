@@ -24,7 +24,7 @@ Conclusion: you currently **can not use an LLM** to literally generate or transf
 The consequences of failing this advise could be huge for UseTheSource and Rascal (disastrous), 
 so please do keep in line. Your code, your responsibility.
 
-#### AI applications of {sofware,natural} language processing
+#### AI applications of {software,natural} language processing
 
 As LLM's are (natural) language processors and UseTheSource is all about software language processing, there is opportunity to combine the two. All kinds of experiments regarding the use of LLM's to replace or complement the language processors have common issues. I.o.w. a UseTheSource contributor must:
 1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
