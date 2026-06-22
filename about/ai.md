@@ -18,8 +18,8 @@ that you might easily be failing compliance with the [Contributor License Agreem
 
 Conclusion: you currently **can not use an LLM** to generate or transform code for our projects!
 
-To work around this, you could explore the design space using an LLM/chatbot/AI, and then 
-write your production ready code from scratch. Learn from the AI, but **don't replace your work by the AI-generated code**.
+To work around this, you could explore the design space AI, and then 
+write your production ready code **from scratch**. You can learn knowledge and skills from the AI, but not literal code.
 
 The consequences of failing this advise could be huge for UseTheSource and Rascal (disastrous), 
 so please do keep in line. Your code, your responsibility.
