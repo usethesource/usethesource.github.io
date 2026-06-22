@@ -14,7 +14,7 @@ that you might easily be failing compliance with the [Contributor License Agreem
 > * [x] Each contribution which I submit is and will be an original work of authorship and I can legally contribute it to open-source.
 > * [x] To the best of my knowledge each contribution I submit will not violate any copyright laws, trademarks, patents, or other intellectual property rights.
 
-"To the best of my knowledge" is this case means that you know that you don't know if the AI you used is violating any copyright laws.
+"To the best of my knowledge" is this case means that you know that you don't know if the AI you used is violating any rights.
 
 TL;DR you currently **can not use an LLM** to generate or transform code for our projects. 
 
