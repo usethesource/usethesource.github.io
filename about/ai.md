@@ -3,7 +3,7 @@ title: AI rules
 ---
 
 The application of AI -in particular Large Language Models (LLMs)- is interesting for 
-UseTheSource projects. Although most of the practical consequences are already outlined [elsewhere](/about/index.html),
+UseTheSource projects. Although most of the practical consequences are already outlined [elsewhere](/about/index),
 we explain some of the consequences here for our contributors.
 
 #### AI applied to UseTheSource source code 
