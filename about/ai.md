@@ -22,19 +22,15 @@ Conclusion: you currently can't use an LLM to literally generate or transform co
 #### AI applications of {software,natural} language processing: yes, with caution.
 
 All kinds of applications of LLM's in UseTheSource projects have common issues. A UseTheSource contributor applying an LLM in their project must:
-
-0. If code **generation** or **transformation** is the topic, see [above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. Be very careful.
-1. If **publication** under real person author names, pseudonyms, or avatars, of AI generated language is a feature, then [see above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. Be very careful. Publication types to think about include:
+1. If code **generation** or **transformation** is the topic, see [above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. 
+1. If **publication** of AI generated language is a feature, then [see above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. Publication types to think about include:
     * scientific pre-prints, conference proceedings and journals;
     * blogs and vlogs
     * natural language and code in messages in issue trackers, or pull requests;
     * answers on stackoverflow.com, discussion sites and other Q/A media;
     * books and chapters of books
-1. Manage and communicate usage **licenses** of existing LLMs (open-source or not), and make sure your users are also made aware of their rights and obligations. Especially privacy is an interesting topic to manage, but also code ownership, licenses and other rights
-2. Manage and communicate the **environmental impact** of the training and usage of LLMs. And also communicate clearly to users what this impact was/is.
-3. Do no harm. Understand and manage the level of **expertise** in the target community for their project. Will the introduction of the LLM increase or decrease the expertise level in this community? Is that really beneficial? 
-4. Give the **user agency** over the choice of LLM to use for each task (download and install, or webservice connectivity). Possibly also the users of our users.
-   * this means never linking and LLM into a jar, or downloading it just-in-time under-the-hood.
-   * this also means users have to provide their own credentials to AI behind web services
-
+1. Manage and communicate usage **LLM licenses** of used LLMs. 
+2. Manage and communicate the **environmental impact** of the training and usage of LLMs. 
+3. Manage and communicate the effect on the level of **expertise** in the target community. 
+4. Give the **user agency** over the choice of LLM to use for each task, during download/install, or during webservice login.
 
