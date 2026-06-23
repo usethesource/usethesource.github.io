@@ -27,7 +27,7 @@ Conclusion: you currently can't use an LLM to literally generate or transform co
 #### Experimental AI applications of {software,natural} language processing: yes, with caution.
 
 All kinds of applications of LLM's in UseTheSource projects have common issues. A UseTheSource contributor applying an LLM in their project must:
-1. If code **generation** or **transformation** is the topic, see [above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no) for issues with licensing and other rights. 
+1. If code **generation** or **transformation** is the topic, see [above](#ai-applied-to-usethesource-source-code-itself-no) for issues with licensing and other rights. 
 1. If **publication** of AI generated language is a feature (arxiv, conference, issue tracker, online discussion), then [see above](https://usethesource.io/about/ai.html#:~:text=AI%20applied%20to%20UseTheSource%20source%20code%20itself%3A%20no), with code replaces by natural language text.
 1. Manage and communicate **LLM licenses** to users (and their users). 
 2. Manage and communicate the **environmental impact** of the training and usage of LLMs. 
