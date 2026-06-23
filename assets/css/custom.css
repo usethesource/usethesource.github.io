@@ -7,6 +7,10 @@
 	margin: 30px 0;
   }
 
+  .task-list-item {
+    list-style-type: none;
+  }
+
   .small-title {
     font-size: 2em;
     line-height: 30px;
