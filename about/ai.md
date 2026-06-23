@@ -22,7 +22,7 @@ that you might fail to be compliant with the [Contributor License Agreement](htt
 - [x] _Each contribution which I submit is and will be an original work of authorship and I can legally contribute it to open-source._
 - [x] _To the best of my knowledge each contribution I submit will not violate any copyright laws, trademarks, patents, or other intellectual property rights._
 
-Conclusion: AI can not be used to _literally_ generate or transform code or (inline) documenation for our projects.
+Conclusion: AI can not be used to _literally_ generate or transform code or (inline) documentation for our projects.
 
 #### Experimental AI applications of {software,natural} language processing: yes, with caution.
 
