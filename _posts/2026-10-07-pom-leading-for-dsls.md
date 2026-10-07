@@ -12,7 +12,7 @@ In this post we report on the important changes to dependency resolution in Rasc
 
 ## POM-leading for DSL projects - October 10, 2026
 
-Since some time [**TODO: Rascal version**], Rascal projects have been slowly moving away from the manifest-based project configuration towards Maven's [POM](https://maven.apache.org/pom.html). Since [**TODO: Rascal version**], library depencies need to be specified in the POM. These libraries are resolved (and, if needed, downloaded) in the local Maven repository and used by Rascal tools like the VS Code extension (IDE features) and the Maven plugin (`mvn compile`).
+Since some time, Rascal projects have been gradually moving away from the manifest-based project configuration towards Maven's [POM](https://maven.apache.org/pom.html). Library depencies need to be specified in the POM. These libraries are resolved (and, if needed, downloaded) in the local Maven repository and used by Rascal tools like the VS Code extension (IDE features) and the Maven plugin (`mvn compile`).
 
 However, the `rascal` and `rascal-lsp` dependencies were treated differently. In many cases, it was not even necessary to explicitly specifiy them in the POM, because they were implicitly added. And even if specified, their version would often be ignored in the IDE, due to implementation constraints.
 
@@ -20,7 +20,7 @@ Not anymore! In the past year, we have reworked many parts of Rascal and the VS 
 
 In order to work with the newest release of the VS Code extension, new and existing projects should be set up with the proper dependencies. Rascal language projects might require code changes as well.
 
-### Changes to all Rascal projects
+### Modifying existing Rascal projects
 
 Any new or existing project requires an explicit dependency on Rascal `0.43.0` in the POM:
 
@@ -35,7 +35,7 @@ Any new or existing project requires an explicit dependency on Rascal `0.43.0` i
 </dependencies>
 ```
 
-### Changes to language projects
+### Modifying existing language projects
 
 Language projects are projects that use the [`util::LanguageServer` library](https://www.rascal-mpl.org/docs/Packages/org.rascalmpl.rascal-lsp/Library/util/LanguageServer/) and/or use [`registerLanguage`](https://www.rascal-mpl.org/docs/Packages/org.rascalmpl.rascal-lsp/Library/util/LanguageServer/#util-LanguageServer-registerLanguage) in the REPL. These projects require additional changes. First of all, they need a POM dependency on the newly released version of Rascal LSP, since this dependency is not implicitly derived from the development environment anymore.
 
