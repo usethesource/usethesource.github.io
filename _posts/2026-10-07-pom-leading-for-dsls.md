@@ -17,6 +17,7 @@ Since some time, Rascal projects have been gradually moving away from the manife
 However, the `rascal` and `rascal-lsp` dependencies were treated differently. In many cases, it was not even necessary to explicitly specifiy them in the POM, because they were implicitly added. And even if specified, their version would often be ignored in the IDE, due to implementation constraints.
 
 Not anymore! In the past year, we have reworked many parts of Rascal and the VS Code extension. This allows the extension to follow the POM more closely, leading to predictable and transparent dependency versions in Rascal projects. REPLs in VS Code and type-checks in the IDE will now use the Rascal standard library version from the POM, and language servers registered using `registerLanguage` will run with the specified Rascal and LSP versions.
+As a consequence, CPU and memory pressure have increased. For more details, see [Modifying existing language projects](#modifying-existing-language-projects).
 
 In order to work with the newest release of the VS Code extension, new and existing projects should be set up with the proper dependencies. Rascal language projects might require code changes as well.
 
@@ -67,3 +68,5 @@ void main() {
     ));
 }
 ```
+
+Under the hood, each registered language will run in a dedicated process. Languages are thus completely isolated in case of a crash, improving the robustness of the language server, especially when registering multiple languages. As a consequence, the CPU and memory of the extension increased.
